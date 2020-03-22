@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:LOVA.ViewModels"
+             mc:Ignorable="d"
+             x:Class="LOVA.Views.Errors.ReplaceDevicePage">
+    <ScrollView>
+        <StackLayout>
+            
+            <Label Text="Problembeskrivning:" />
+            <Editor Placeholder="Problembeskrivning"
+                    HeightRequest="100"
+                    BackgroundColor="#F9CACA"
+                    Text="{Binding ProblemDescription}"
+                    />
+            <Label Text="Brunn/Intagsenhet:"  />
+            <Entry Placeholder="Brunn" Text="{Binding WellName}" />
+            
+            <Label Text="Serienummer ny del:" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Entry Grid.Row="0" Grid.Column="0" Placeholder="Serienr ny aktivator" Text="{Binding SerialNewAktivator}" />
+                <Button Grid.Row="0" Grid.Column="1" Text="Scan aktivator" Command="{Binding OnScanNewButtonClicked}" />
+                <Entry Grid.Row="1" Grid.Column="0" Placeholder="Serienr ny ventil" Text="{Binding SerialNewVentil}" />
+                <Button Grid.Row="1" Grid.Column="1" Text="Scan ventil" Command="{Binding OnScanNewVentilButtonClicked}" />
+            </Grid>
+            <Label Text="Åtgärd:" />
+            <Editor Placeholder="Åtgärd"
+                    HeightRequest="100"
+                    BackgroundColor="#CDF9CA"
+                    Text="{Binding ProblemSolution}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Switch VerticalOptions="Center" IsToggled="{Binding IsSwitchToggled}" />
+                <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Fakturerbart"/>
+                <Button Grid.Column="2" VerticalOptions="Center" Text="Foto" IsEnabled="{Binding IsFoto}" />
+            </Grid>
+            <Button Text="Spara" Command="{Binding SaveError}" />
+        </StackLayout>
+
+    </ScrollView>
+
+</ContentPage>
