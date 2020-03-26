@@ -14,7 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.UWP;
+using Xamarin.Forms.Xaml;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -27,11 +27,8 @@ namespace LOVA.UWP
     {
         public MainPage()
         {
-            
-
             this.InitializeComponent();
-
-            this.LoadApplication(new LOVA.App());
+            LoadApplication(new LOVA.App());
         }
     }
 }

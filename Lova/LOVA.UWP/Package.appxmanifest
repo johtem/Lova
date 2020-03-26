@@ -7,11 +7,11 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="9fc05a68-f3a4-469d-b010-c5b7b20d7ceb"
+    Name="e84878e4-f946-45c4-804e-4e9892184ea2"
     Publisher="CN=Johan Tempelman"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="9fc05a68-f3a4-469d-b010-c5b7b20d7ceb" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="e84878e4-f946-45c4-804e-4e9892184ea2" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>LOVA.UWP</DisplayName>

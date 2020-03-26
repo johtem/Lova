@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{AC77D7B1-BC3A-4554-A8D5-F699D6511A22}</ProjectGuid>
+    <ProjectGuid>{33F1D01A-2624-4868-9BC8-9FA57482E1D1}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LOVA.UWP</RootNamespace>
@@ -153,20 +153,11 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
     </PackageReference>
-    <PackageReference Include="Plugin.Permissions">
-      <Version>3.0.0.12</Version>
-    </PackageReference>
-    <PackageReference Include="Telerik.UI.for.Xamarin">
-      <Version>2020.1.218.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xam.Plugin.Media">
-      <Version>5.0.0-beta</Version>
-    </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.5.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.5.0.396</Version>
+      <Version>4.5.0.495</Version>
     </PackageReference>
     <PackageReference Include="ZXing.Net.Mobile">
       <Version>2.4.1</Version>
@@ -176,7 +167,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LOVA\LOVA\LOVA.csproj">
+    <ProjectReference Include="..\LOVA\LOVA.csproj">
       <Project>{3d394ebf-cc20-4fb1-9d3a-eb9591207288}</Project>
       <Name>LOVA</Name>
     </ProjectReference>
