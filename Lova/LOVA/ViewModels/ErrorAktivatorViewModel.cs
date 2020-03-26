@@ -17,6 +17,7 @@ namespace LOVA.ViewModels
             OnScanNewButtonClicked = new Command(ScanNewAktivator, () => !IsBusy);
             OnScanNewVentilButtonClicked = new Command(ScanNewVentil, () => !IsBusy);
             SaveError = new Command(Save, () => !IsBusy);
+            OnTakePictureButtonClicked = new Command(TakePicture, () => !IsBusy);
         }
 
         void OnPropertyChanged([CallerMemberName] string name = "")
@@ -159,6 +160,8 @@ namespace LOVA.ViewModels
 
         public Command OnScanNewVentilButtonClicked { get; }
 
+        public Command OnTakePictureButtonClicked { get; }
+
         async void ScanNewAktivator()
         {
             var description = new ErrorAktivatorViewModel
@@ -186,6 +189,21 @@ namespace LOVA.ViewModels
 
             await Application.Current.MainPage.Navigation.PushAsync(new ScanNewVentil(description));
         }
+
+        async void TakePicture()
+        {
+            var description = new ErrorAktivatorViewModel
+            {
+                WellName = WellName,
+                ProblemDescription = ProblemDescription,
+                SerialNewAktivator = SerialNewAktivator,
+                SerialNewVentil = SerialNewVentil,
+                ProblemSolution = ProblemSolution
+            };
+
+            await Application.Current.MainPage.Navigation.PushAsync(new CameraPage());
+        }
+ 
 
         async void Save()
         {

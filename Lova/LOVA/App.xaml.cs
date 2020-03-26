@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LOVA.Views.Login;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,8 @@ namespace LOVA
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            // MainPage = new NavigationPage(new MainPage());
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

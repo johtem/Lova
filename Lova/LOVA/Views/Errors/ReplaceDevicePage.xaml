@@ -16,7 +16,9 @@
                     Text="{Binding ProblemDescription}"
                     />
             <Label Text="Brunn/Intagsenhet:"  />
-            <Entry Placeholder="Brunn" Text="{Binding WellName}" />
+            <Entry Placeholder="Brunn" 
+                   Text="{Binding WellName}"
+                   BackgroundColor="LightGray"/>
             
             <Label Text="Serienummer ny del:" />
             <Grid>
@@ -46,7 +48,7 @@
                 </Grid.ColumnDefinitions>
                 <Switch VerticalOptions="Center" IsToggled="{Binding IsSwitchToggled}" />
                 <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Fakturerbart"/>
-                <Button Grid.Column="2" VerticalOptions="Center" Text="Foto" IsEnabled="{Binding IsFoto}" />
+                <Button Grid.Column="2" VerticalOptions="Center" Text="Foto" IsEnabled="{Binding IsFoto}" Command="{Binding OnTakePictureButtonClicked}"/>
             </Grid>
             <Button Text="Spara" Command="{Binding SaveError}" />
         </StackLayout>
