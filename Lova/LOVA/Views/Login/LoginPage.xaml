@@ -9,7 +9,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Color x:Key="primary">#64379B</Color>
+            
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -18,7 +18,7 @@
                 <Label HeightRequest="130"
                        HorizontalOptions="FillAndExpand"
                        Text="Löttingelund VA"
-                       BackgroundColor="{StaticResource primary}"
+                       BackgroundColor="{StaticResource primaryBackgroundColor}"
                        TextColor="White"
                        FontSize="40"
                        HorizontalTextAlignment="Center"
@@ -35,13 +35,9 @@
                        Text="{Binding Password}"
                        />
 
-                <Button Margin="20,0,20,0"
-                        HeightRequest="50"
-                        TextColor="White"
-                        Text="Login"
-                        BackgroundColor="{StaticResource primary}"
-                        HorizontalOptions="EndAndExpand"
-                        CornerRadius="50"
+                <Button Margin="20,0,20,0"                      
+                        Text="Login"                        
+                        HorizontalOptions="EndAndExpand"                        
                         Command="{Binding LoginButton}"/>
             </StackLayout>
             

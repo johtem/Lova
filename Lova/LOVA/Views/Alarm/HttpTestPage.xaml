@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="LOVA.Views.Alarm.HttpTestPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" Spacing="0" Padding="5">
+            <ActivityIndicator IsVisible="{Binding IsBusy}"  
+                               IsRunning="{Binding IsBusy}"
+                               Color="Black"/>
+            <ListView IsVisible="true"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding ResultList}"
+                      Margin="0,5,0,5"
+                      >
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Vertical" Margin="0,5,0,5">
+                                <Label Text="{Binding name}"
+                                       HeightRequest="30"
+                                       FontSize="Medium"/>
+                                <Label Text="{Binding gender}"
+                                       HeightRequest="20"
+                                       FontSize="Small" />
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

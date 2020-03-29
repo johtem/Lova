@@ -13,9 +13,13 @@
                    VerticalOptions="CenterAndExpand"
                    FontSize="Medium" />
             <Button Text="Pumphuset"
-                    Clicked="OnPumphusetButtonClicked"/>
+                    Clicked="OnPumphusetButtonClicked"
+                    BackgroundColor="{StaticResource primaryBackgroundColor}"
+               TextColor="White"/>
             <Button Text="Intagsenhet"                   
-                    Clicked="OnAktivatorButtonClicked"/>
+                    Clicked="OnAktivatorButtonClicked"
+                    BackgroundColor="{StaticResource primaryBackgroundColor}"
+                    TextColor="White"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

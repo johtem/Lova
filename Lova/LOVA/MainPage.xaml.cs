@@ -17,7 +17,8 @@ namespace LOVA
         public MainPage()
         {
             InitializeComponent();
-           
+            NavigationPage.SetHasNavigationBar(this, false);
+
         }
 
         async void OnErrorButtonClicked(object sender, EventArgs e)

@@ -21,6 +21,8 @@ namespace LOVA.Views.Errors
 
             takePhoto.Clicked += async (sender, args) =>
             {
+                await CrossMedia.Current.Initialize();
+
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
                     await DisplayAlert("Ingen kamera", "Kameran är inte tillgänglig", "OK");

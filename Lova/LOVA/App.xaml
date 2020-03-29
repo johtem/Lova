@@ -6,6 +6,25 @@
              mc:Ignorable="d"
              x:Class="LOVA.App">
     <Application.Resources>
+        <ResourceDictionary>
+            <!-- colors -->
+            
+            <Color x:Key="primaryBackgroundColor">#5514B4</Color>
+            <Color x:Key="primaryTextColor">#FFFAFA</Color>
+            
+            <Color x:Key="BackgroundColorErrorDescription">#FFF4EE</Color>
+            <Color x:Key="BackgroundColorErrorSolution">#F0FFF0</Color>
+            
+            
+            
+            <!-- Generic styles -->
 
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource primaryBackgroundColor}" />
+                <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="HeightRequest" Value="52" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

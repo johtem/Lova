@@ -30,14 +30,11 @@ namespace LOVA.ViewModels
 
        async void LoginCheck()
         {
-            if (LoginName == "Lova" && Password == "Pumphus")
+            if (LoginName != "Löva" && Password != "Pumphus")
             {
-                await App.Current.MainPage.DisplayAlert("Test", "Equal", "OK");
+                await App.Current.MainPage.DisplayAlert("Incorrect", "Lösenordet är fel ", "OK");
             }
-            else
-            {
-                await App.Current.MainPage.DisplayAlert("Test", "Not equal", "OK");
-            }
+            
             await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
         }
     }

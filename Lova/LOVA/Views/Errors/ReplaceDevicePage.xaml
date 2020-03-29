@@ -12,13 +12,13 @@
             <Label Text="Problembeskrivning:" />
             <Editor Placeholder="Problembeskrivning"
                     HeightRequest="100"
-                    BackgroundColor="#F9CACA"
+                    BackgroundColor="{StaticResource BackgroundColorErrorDescription}"
                     Text="{Binding ProblemDescription}"
                     />
             <Label Text="Brunn/Intagsenhet:"  />
-            <Entry Placeholder="Brunn" 
+            <Entry Placeholder="Brunn/Intagsenhet" 
                    Text="{Binding WellName}"
-                   BackgroundColor="LightGray"/>
+                   BackgroundColor="#FFFAFA"/>
             
             <Label Text="Serienummer ny del:" />
             <Grid>
@@ -38,17 +38,17 @@
             <Label Text="Åtgärd:" />
             <Editor Placeholder="Åtgärd"
                     HeightRequest="100"
-                    BackgroundColor="#CDF9CA"
+                    BackgroundColor="{StaticResource BackgroundColorErrorSolution}"
                     Text="{Binding ProblemSolution}"/>
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Switch VerticalOptions="Center" IsToggled="{Binding IsSwitchToggled}" />
                 <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Fakturerbart"/>
-                <Button Grid.Column="2" VerticalOptions="Center" Text="Foto" IsEnabled="{Binding IsFoto}" Command="{Binding OnTakePictureButtonClicked}"/>
+                <Button Grid.Column="2" VerticalOptions="CenterAndExpand" Text="Foto" IsEnabled="{Binding IsFoto}" Command="{Binding OnTakePictureButtonClicked}"/>
             </Grid>
             <Button Text="Spara" Command="{Binding SaveError}" />
         </StackLayout>

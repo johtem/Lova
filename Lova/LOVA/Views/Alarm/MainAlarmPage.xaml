@@ -6,10 +6,17 @@
              mc:Ignorable="d"
              x:Class="LOVA.Views.Alarm.MainAlarmPage">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Huvudsida för statistik!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="2,2,2,2">
+
+            <Label Text="Åtgärd"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="Medium" />
+
+            <Button Text="HTTP get Test"                   
+                    Clicked="OnHttpButtonClicked"
+                    BackgroundColor="{StaticResource primaryBackgroundColor}"
+                    TextColor="White"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

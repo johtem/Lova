@@ -14,8 +14,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="130" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
 
@@ -25,20 +24,30 @@
                Grid.Column="0"
                Grid.ColumnSpan="2"
                Text="Löttingelund VA" 
-               FontSize="Large"
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand" />
+               FontSize="40"
+               HorizontalOptions="FillAndExpand"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               BackgroundColor="{StaticResource primaryBackgroundColor}"
+               TextColor="White"
+               HeightRequest="130" />
 
 
-        <Button Grid.Row="3"
+        <Button Grid.Row="2"
                Grid.Column="0"
                Text="Fel" 
-               Clicked="OnErrorButtonClicked" />
+                HeightRequest="50"
+               Clicked="OnErrorButtonClicked"
+               BackgroundColor="{StaticResource primaryBackgroundColor}"
+               TextColor="White"/>
 
-        <Button Grid.Row="3"
+        <Button Grid.Row="2"
                Grid.Column="1"
                Text="Statistik"
-                Clicked="OnAlarmButtonClicked"/>
+                HeightRequest="50"
+               Clicked="OnAlarmButtonClicked"
+               BackgroundColor="{StaticResource primaryBackgroundColor}"
+               TextColor="White"/>
     </Grid>
 
 </ContentPage>

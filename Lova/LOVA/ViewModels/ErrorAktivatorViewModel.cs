@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace LOVA.ViewModels
 {
@@ -173,7 +174,19 @@ namespace LOVA.ViewModels
                 ProblemSolution = ProblemSolution
             };
 
-            await Application.Current.MainPage.Navigation.PushAsync(new ScanNewAktivator(description));
+            // await Application.Current.MainPage.Navigation.PushAsync(new ScanNewAktivator(description));
+
+            var scan = new ZXingScannerPage();
+            await Application.Current.MainPage.Navigation.PushAsync(scan);
+            scan.OnScanResult += (result) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                    SerialNewAktivator = result.Text;
+                });
+            };
+
         }
 
         async void ScanNewVentil()

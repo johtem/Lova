@@ -21,7 +21,10 @@
                                 OnScanResult="OnScanResultHandle"
                                 IsScanning="true"
                                 WidthRequest="200"
-                                HeightRequest="300" />
+                                HeightRequest="300"
+                                IsVisible="true"
+                                IsAnalyzing="true"
+                                />
         <Button Grid.Row="2"  Text="Tillbaka" Clicked="Button_Clicked" />
     </Grid>
 </ContentPage>

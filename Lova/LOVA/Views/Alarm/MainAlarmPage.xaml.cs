@@ -16,5 +16,10 @@ namespace LOVA.Views.Alarm
         {
             InitializeComponent();
         }
+
+        private void OnHttpButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new HttpTestPage());
+        }
     }
 }

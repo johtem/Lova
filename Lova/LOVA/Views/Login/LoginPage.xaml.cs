@@ -16,7 +16,7 @@ namespace LOVA.Views.Login
         public LoginPage()
         {
             InitializeComponent();
-            
+            NavigationPage.SetHasNavigationBar(this, false);
             BindingContext = new LoginPageViewModel();
         }
     }
