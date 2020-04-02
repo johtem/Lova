@@ -21,46 +21,46 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\Alarm\MainAlarmPage.xaml.cs">
+    <Compile Update="Pages\Alarm\MainAlarmPage.xaml.cs">
       <DependentUpon>MainAlarmPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Errors\MainErrorPage.xaml.cs">
+    <Compile Update="Pages\Errors\MainErrorPage.xaml.cs">
       <DependentUpon>MainErrorPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Errors\PumphusetPage.xaml.cs">
+    <Compile Update="Pages\Errors\PumphusetPage.xaml.cs">
       <DependentUpon>PumphusetPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\Errors\ReplaceDevicePage.xaml.cs">
+    <Compile Update="Pages\Errors\ReplaceDevicePage.xaml.cs">
       <DependentUpon>ReplaceDevicePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\Errors\ScanNewVentil.xaml.cs">
-      <DependentUpon>ScanNewVentil.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\Alarm\HttpTestPage.xaml">
+    <EmbeddedResource Update="Pages\Alarm\HttpTestPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Alarm\MainAlarmPage.xaml">
+    <EmbeddedResource Update="Pages\Alarm\MainAlarmPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Errors\CameraPage.xaml">
+    <EmbeddedResource Update="Pages\Alarm\ReportIssuesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Errors\MainErrorPage.xaml">
+    <EmbeddedResource Update="Pages\Errors\MainErrorPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Errors\PumphusetPage.xaml">
+    <EmbeddedResource Update="Pages\Errors\PumphusetPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Errors\ReplaceDevicePage.xaml">
+    <EmbeddedResource Update="Pages\Errors\ReplaceDevicePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Errors\ScanNewAktivator.xaml">
+    <EmbeddedResource Update="Pages\Login\LoginPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Login\LoginPage.xaml">
+    <EmbeddedResource Update="Styles\GeneralDeviceStyle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Styles\SmallDeviceStyle.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

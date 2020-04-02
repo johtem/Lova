@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="LOVA.Views.Login.LoginPage"
+             x:Class="LOVA.Pages.Login.LoginPage"
              Title="Login">
 
     <ContentPage.Resources>
@@ -27,6 +27,7 @@
                        HeightRequest="50"
                        Placeholder="Email"
                        Text="{Binding LoginName}"
+                       Keyboard="Email"
                        />
                 <Entry Margin="20,0,20,0"
                        HeightRequest="50"
@@ -35,10 +36,16 @@
                        Text="{Binding Password}"
                        />
 
-                <Button Margin="20,0,20,0"                      
-                        Text="Login"                        
-                        HorizontalOptions="EndAndExpand"                        
-                        Command="{Binding LoginButton}"/>
+                <Button                     
+                        Text="Login"    
+                        WidthRequest="200"                      
+                        Command="{Binding LoginButton}"
+                        Style="{StaticResource MainButtonStyle}"/>
+
+                <Label x:Name="LabelAppInfo" HorizontalOptions="Center" Style="{StaticResource MainTitleStyle}"/>
+                <Label x:Name="LabelVersionInfo" HorizontalOptions="Center" />
+
+                
             </StackLayout>
             
         </ScrollView>

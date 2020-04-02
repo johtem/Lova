@@ -1,4 +1,4 @@
-﻿
+﻿using LOVA.ViewModels;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -6,18 +6,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Telerik.XamarinForms.Input;
+using Telerik.XamarinForms.Input.DataForm;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LOVA.Views.Errors
+namespace LOVA.Pages.Errors
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CameraPage : ContentPage
+    public partial class ReplaceDevicePage : ContentPage
     {
-        public CameraPage()
+        private ReplaceDeviceViewModel _viewModel;
+       
+
+        public ReplaceDevicePage()
         {
             InitializeComponent();
+
+            _viewModel = new ReplaceDeviceViewModel();
+
+            BindingContext = _viewModel;
 
             takePhoto.Clicked += async (sender, args) =>
             {
@@ -45,41 +53,34 @@ namespace LOVA.Views.Errors
                     return;
                 }
 
+                
+                image.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    file.Dispose();
+                    return stream;
+                });
+
+                
+
                 await DisplayAlert("Bild", file.Path, "OK");
-
-                image.Source = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    file.Dispose();
-                    return stream;
-                });
             };
-
-            pickPhoto.Clicked += async (sender, args) =>
-            {
-                if (!CrossMedia.Current.IsPickPhotoSupported)
-                {
-                    await DisplayAlert("Ingen support", "Ingen supoprt för att nå bilderna", "OK");
-                    return;
-                }
-
-                var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-                {
-                    PhotoSize = PhotoSize.Medium
-                });
-
-                if (file == null)
-                    return;
-
-                image.Source = ImageSource.FromStream(() =>
-                {
-                    var stream = file.GetStream();
-                    file.Dispose();
-                    return stream;
-                });
-            };
-
 
         }
+
+        //public ReplaceDevicePage(ReplaceDeviceViewModel errorVM)
+        //{
+        //    InitializeComponent();
+        //    BindingContext = errorVM;
+        //}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            _viewModel.IsChargeable = false;
+
+        }
+
     }
 }

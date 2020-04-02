@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LOVA.Views.Errors
+namespace LOVA.Styles
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PumphusetPage : ContentPage
+    public partial class GeneralDeviceStyle : ResourceDictionary
     {
-        public PumphusetPage()
+        public static GeneralDeviceStyle SharedInstance { get; } = new GeneralDeviceStyle();
+        public GeneralDeviceStyle()
         {
             InitializeComponent();
         }

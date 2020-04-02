@@ -1,4 +1,4 @@
-﻿using LOVA.Views.Errors;
+﻿using LOVA.Pages.Errors;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,7 +28,7 @@ namespace LOVA
 
         async void OnAlarmButtonClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LOVA.Views.Alarm.MainAlarmPage());
+            await Navigation.PushAsync(new LOVA.Pages.Alarm.MainAlarmPage());
         }
     }
 }

@@ -18,10 +18,7 @@ namespace LOVA.ViewModels
         public string LoginName { get; set; }
         public string Password { get; set; }
 
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        
 
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LOVA.Views.Errors
+namespace LOVA.Pages.Errors
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainErrorPage : ContentPage

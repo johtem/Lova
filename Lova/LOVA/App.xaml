@@ -6,6 +6,13 @@
              mc:Ignorable="d"
              x:Class="LOVA.App">
     <Application.Resources>
+        <ResourceDictionary x:Name="dictionary" >
+            <Color x:Key="Primary">#5514B4</Color>
+            <Color x:Key="Secondary">#3700B3</Color>
+            <Color x:Key="Accent">#03DAC6</Color>
+            <Color x:Key="Light">White</Color>
+        </ResourceDictionary>
+        
         <ResourceDictionary>
             <!-- colors -->
             
@@ -14,9 +21,11 @@
             
             <Color x:Key="BackgroundColorErrorDescription">#FFF4EE</Color>
             <Color x:Key="BackgroundColorErrorSolution">#F0FFF0</Color>
-            
-            
-            
+
+            >
+
+
+
             <!-- Generic styles -->
 
             <Style TargetType="Button">

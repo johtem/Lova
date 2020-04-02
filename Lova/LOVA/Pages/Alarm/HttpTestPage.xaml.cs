@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LOVA.Views.Alarm
+namespace LOVA.Pages.Alarm
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HttpTestPage : ContentPage

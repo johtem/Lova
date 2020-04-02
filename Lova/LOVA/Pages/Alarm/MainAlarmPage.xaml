@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="LOVA.Views.Errors.MainErrorPage">
+             x:Class="LOVA.Pages.Alarm.MainAlarmPage">
     <ContentPage.Content>
         <StackLayout Margin="2,2,2,2">
 
@@ -12,12 +12,13 @@
                    HorizontalOptions="CenterAndExpand"
                    VerticalOptions="CenterAndExpand"
                    FontSize="Medium" />
-            <Button Text="Pumphuset"
-                    Clicked="OnPumphusetButtonClicked"
+            <Button Text="Jour åtgärder"                   
+                    Clicked="OnIssueReportButtonClicked"
                     BackgroundColor="{StaticResource primaryBackgroundColor}"
-               TextColor="White"/>
-            <Button Text="Intagsenhet"                   
-                    Clicked="OnAktivatorButtonClicked"
+                    TextColor="White"/>
+
+            <Button Text="Starwars HTTP Test"                   
+                    Clicked="OnHttpButtonClicked"
                     BackgroundColor="{StaticResource primaryBackgroundColor}"
                     TextColor="White"/>
         </StackLayout>

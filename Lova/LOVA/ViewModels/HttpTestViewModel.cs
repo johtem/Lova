@@ -1,4 +1,4 @@
-﻿using LOVA.Data;
+﻿using LOVA.Services;
 using LOVA.Models;
 using System;
 using System.Collections.Generic;
@@ -6,20 +6,12 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
+using Xamarin.Forms;
 
 namespace LOVA.ViewModels
 {
-    public class HttpTestViewModel : INotifyPropertyChanged
-    {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        
-        void OnPropertyChanged([CallerMemberName] string name = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
-
-
+    public class HttpTestViewModel : BaseViewModel
+    { 
 
         List<Result> resultList;
         public List<Result> ResultList 
@@ -35,7 +27,7 @@ namespace LOVA.ViewModels
 
         public HttpTestViewModel()
         {
-            
+            Title = "Starswars data";
             LoadDataAsync();
             
         }
@@ -49,19 +41,6 @@ namespace LOVA.ViewModels
             ResultList = apa.results;
             IsBusy = false;
         }
-
-        bool isBusy;
-        public bool IsBusy 
-        {
-            get { return isBusy; }
-            set
-            {
-                isBusy = value;
-                OnPropertyChanged();
-            }
-        }
-
-        
 
 
     }

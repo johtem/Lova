@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LOVA.Views.Alarm
+namespace LOVA.Pages.Alarm
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainAlarmPage : ContentPage
@@ -20,6 +20,11 @@ namespace LOVA.Views.Alarm
         private void OnHttpButtonClicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new HttpTestPage());
+        }
+
+        private void OnIssueReportButtonClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new ReportIssuesPage());
         }
     }
 }

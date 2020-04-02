@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:LOVA.ViewModels"
              mc:Ignorable="d"
-             x:Class="LOVA.Views.Errors.ReplaceDevicePage">
+             x:Class="LOVA.Pages.Errors.ReplaceDevicePage">
     <ScrollView>
         <StackLayout>
             
@@ -31,8 +31,8 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
                 <Entry Grid.Row="0" Grid.Column="0" Placeholder="Serienr ny aktivator" Text="{Binding SerialNewAktivator}" />
-                <Button Grid.Row="0" Grid.Column="1" Text="Scan aktivator" Command="{Binding OnScanNewButtonClicked}" />
-                <Entry Grid.Row="1" Grid.Column="0" Placeholder="Serienr ny ventil" Text="{Binding SerialNewVentil}" />
+                <Button Grid.Row="0" Grid.Column="1" Text="Scan aktivator" Command="{Binding OnScanNewButtonClicked}"  />
+                <Entry Grid.Row="1" Grid.Column="0" Placeholder="Serienr ny ventil" Text="{Binding SerialNewValve}" />
                 <Button Grid.Row="1" Grid.Column="1" Text="Scan ventil" Command="{Binding OnScanNewVentilButtonClicked}" />
             </Grid>
             <Label Text="Åtgärd:" />
@@ -44,11 +44,13 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="50" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Switch VerticalOptions="Center" IsToggled="{Binding IsSwitchToggled}" />
+                <Switch VerticalOptions="Center" IsToggled="{Binding IsSwitchToggled}" OnColor="{StaticResource primaryBackgroundColor}"/>
                 <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Fakturerbart"/>
-                <Button Grid.Column="2" VerticalOptions="CenterAndExpand" Text="Foto" IsEnabled="{Binding IsFoto}" Command="{Binding OnTakePictureButtonClicked}"/>
+                <Image Grid.Column="2"  x:Name="image" Source="{Binding PhotoPath}" IsVisible="{Binding IsChargeable}"/>
+                <Button Grid.Column="3" VerticalOptions="CenterAndExpand" Text="Foto" IsEnabled="{Binding IsChargeable}" x:Name="takePhoto" Command="{Binding OnTakePictureButtonClicked}"/>
             </Grid>
             <Button Text="Spara" Command="{Binding SaveError}" />
         </StackLayout>

@@ -1,5 +1,4 @@
-﻿using LOVA.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,16 +7,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LOVA.Views.Login
+namespace LOVA.Styles
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class SmallDeviceStyle : ResourceDictionary
     {
-        public LoginPage()
+        public static SmallDeviceStyle SharedInstance { get; } = new SmallDeviceStyle();
+        public SmallDeviceStyle()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
-            BindingContext = new LoginPageViewModel();
         }
     }
 }
