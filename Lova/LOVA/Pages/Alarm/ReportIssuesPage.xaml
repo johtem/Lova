@@ -4,13 +4,79 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="LOVA.Pages.Alarm.ReportIssuesPage">
+             x:Class="LOVA.Pages.Alarm.ReportIssuesPage"
+             Title="Åtgärder"
+             NavigationPage.HasNavigationBar="False">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="FillAndExpand" Spacing="0" Padding="5">
-                <ActivityIndicator IsVisible="{Binding IsBusy}"  
-                               IsRunning="{Binding IsBusy}"
-                               Color="Black"/>
-                <ListView IsVisible="true"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform iOS=100, Android=84}" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Page Header-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Text="VA Åtgärder"   
+                       FontSize="15"
+                       TextColor="{StaticResource DarkTextColor}"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Margin="32,0,0,0" />
+                <Label Grid.Column="1"
+                       FontSize="12"
+                       Text="{Binding TodaysDate, Mode=OneWay, StringFormat='{0:yyyy-MM-dd}'}"  
+                       TextColor="{StaticResource MediumTextColor}"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       Margin="0,0,32,0" />
+                <Button Grid.Column="2" 
+                        WidthRequest="70"
+                        HeightRequest="10"
+                        BorderColor="AliceBlue"
+                        Text="Tillbaka" 
+                        Clicked="Button_Clicked" />
+            </Grid>
+
+            <!-- Busy Indicator -->
+            <StackLayout
+            IsVisible="{Binding IsBusy, Mode=OneWay}"
+            Grid.Row="1"
+            Spacing="12"
+            BackgroundColor="Transparent"
+            Padding="8,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+                <ActivityIndicator 
+                               IsRunning="{Binding IsBusy, Mode=OneWay}"
+                               Color="{StaticResource primaryBackgroundColor}"
+                               HeightRequest="48"
+                               WidthRequest="48"/>
+
+                <Label Text="{Binding LoadingText, Mode=OneWay}"
+                       HorizontalOptions="Center"
+                       Margin="0, 10,0,0"
+                       Style="{StaticResource RegularTextStyle}"
+                       HorizontalTextAlignment="Center" />
+
+            </StackLayout>
+
+
+            <!-- Main Page -->
+            <StackLayout Grid.Row="1" 
+                     VerticalOptions="FillAndExpand" 
+                     Padding="5" 
+                     Margin="5,5,5,5"
+                     IsVisible="{Binding DataLoaded, Mode=OneWay}"    >
+
+
+                <ListView 
                       HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand"
                       HasUnevenRows="True"
@@ -23,26 +89,42 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Vertical" Margin="0,5,0,5">
-                                <Label Text="{Binding CreatedAt, StringFormat='{0:yyyy-MM-dd}'}"
-                                       HeightRequest="30"
-                                       FontSize="Medium"/>
-                                    <StackLayout Orientation="Horizontal" HeightRequest="20">
-                                    <Label Text="{Binding WellName}"
-                                       
-                                       FontSize="Small" />
-                                    <Label Text="{Binding ProblemDescription}"
-                                       
-                                       FontSize="Small" />
-                                </StackLayout>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="20" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding CreatedAt, StringFormat='{0:yyyy-MM-dd}'}"
+                                           HeightRequest="30"
+                                           FontSize="Medium"
+                                           HorizontalOptions="Start"
+                                           Grid.Row="0"
+                                           Grid.Column="0"/>
+
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           Text="{Binding WellName}"
+                                           HorizontalOptions="End"
+                                           FontSize="Medium" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="0" 
+                                           Grid.ColumnSpan="2"
+                                           HorizontalOptions="Start"
+                                           Text="{Binding ProblemDescription}"
+                                           FontSize="Small" />
+                                </Grid>
 
 
-                                </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
-
-        </ContentPage.Content>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

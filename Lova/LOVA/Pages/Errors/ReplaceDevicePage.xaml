@@ -5,56 +5,106 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:LOVA.ViewModels"
              mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
              x:Class="LOVA.Pages.Errors.ReplaceDevicePage">
-    <ScrollView>
-        <StackLayout>
-            
-            <Label Text="Problembeskrivning:" />
-            <Editor Placeholder="Problembeskrivning"
+
+
+    <!--<StackLayout IsVisible="{Binding IsBusy}">
+        <Label Text="Sparar data" />
+    </StackLayout>-->
+    
+    <Grid IsVisible="{Binding DataLoaded}">
+        <Grid.Margin>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="10,25,10,10" />
+                <On Platform="Android, WinPhone, Windows" Value="10,10,10,10" />
+            </OnPlatform>
+        </Grid.Margin>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+
+        <Label Text="Problembeskrivning:" FontSize="15"  />
+        <Editor Grid.Row="1"   Placeholder="Problembeskrivning" 
                     HeightRequest="100"
                     BackgroundColor="{StaticResource BackgroundColorErrorDescription}"
                     Text="{Binding ProblemDescription}"
                     />
-            <Label Text="Brunn/Intagsenhet:"  />
-            <Entry Placeholder="Brunn/Intagsenhet" 
+
+        <Grid Grid.Row="2" Margin="0,5,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Text="Brunn/Intagsenhet:" HorizontalOptions="Start" FontSize="15"/>
+            <Entry Grid.Column="1" 
+                   Placeholder="Brunn/Intagsenhet" 
                    Text="{Binding WellName}"
-                   BackgroundColor="#FFFAFA"/>
-            
-            <Label Text="Serienummer ny del:" />
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Entry Grid.Row="0" Grid.Column="0" Placeholder="Serienr ny aktivator" Text="{Binding SerialNewAktivator}" />
-                <Button Grid.Row="0" Grid.Column="1" Text="Scan aktivator" Command="{Binding OnScanNewButtonClicked}"  />
-                <Entry Grid.Row="1" Grid.Column="0" Placeholder="Serienr ny ventil" Text="{Binding SerialNewValve}" />
-                <Button Grid.Row="1" Grid.Column="1" Text="Scan ventil" Command="{Binding OnScanNewVentilButtonClicked}" />
-            </Grid>
-            <Label Text="Åtgärd:" />
-            <Editor Placeholder="Åtgärd"
+
+                   HorizontalOptions="Center"/>
+        </Grid>
+        
+
+        
+        <Grid Grid.Row="3" RowSpacing="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="Aktivator" FontSize="15" />
+            <Entry Grid.Row="0" Grid.Column="1" Placeholder="Serienr ny aktivator" Text="{Binding SerialNewAktivator}" />
+            <Label Grid.Row="1" Grid.Column="0" Text="Ventil" FontSize="15" />
+            <Entry Grid.Row="1" Grid.Column="1" Placeholder="Serienr ny ventil" Text="{Binding SerialNewValve}" />
+        </Grid>
+
+        <Label Grid.Row="4" Text="Åtgärd:" FontSize="15" />
+        <Editor Grid.Row="5" Placeholder="Åtgärd"
                     HeightRequest="100"
                     BackgroundColor="{StaticResource BackgroundColorErrorSolution}"
                     Text="{Binding ProblemSolution}"/>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="50" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Switch VerticalOptions="Center" IsToggled="{Binding IsSwitchToggled}" OnColor="{StaticResource primaryBackgroundColor}"/>
-                <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Start" Text="Fakturerbart"/>
-                <Image Grid.Column="2"  x:Name="image" Source="{Binding PhotoPath}" IsVisible="{Binding IsChargeable}"/>
-                <Button Grid.Column="3" VerticalOptions="CenterAndExpand" Text="Foto" IsEnabled="{Binding IsChargeable}" x:Name="takePhoto" Command="{Binding OnTakePictureButtonClicked}"/>
-            </Grid>
-            <Button Text="Spara" Command="{Binding SaveError}" />
-        </StackLayout>
+        <Grid Grid.Row="6" Margin="-10,0,-10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80" />
+            </Grid.ColumnDefinitions>
+            
+            <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Text="Fakturerbart" FontSize="15"/>
+            <Switch Grid.Column="1"
+                    VerticalOptions="Center" 
+                    IsToggled="{Binding IsSwitchToggled}" 
+                    OnColor="{StaticResource primaryBackgroundColor}"
+                    />
+            <Image Grid.Column="2"  x:Name="image" Source="{Binding PhotoPath}" IsVisible="{Binding IsChargeable}"/>
+            <Button Grid.Column="3" VerticalOptions="CenterAndExpand" Text="Foto" IsEnabled="{Binding IsChargeable}" x:Name="takePhoto" Command="{Binding OnTakePictureButtonClicked}"/>
+        </Grid>
+        <Grid Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Text="Spara" Command="{Binding SaveError}" HorizontalOptions="Start"/>
+            <Button Grid.Column="1" Text="Tillbaka" Clicked="Button_Clicked" HorizontalOptions="End" />
+        </Grid>
+        
 
-    </ScrollView>
+
+    </Grid>
+    
+
 
 </ContentPage>

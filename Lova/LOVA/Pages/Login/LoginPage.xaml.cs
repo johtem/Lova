@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
+using LOVA.Services;
 
 namespace LOVA.Pages.Login
 {
@@ -17,10 +18,13 @@ namespace LOVA.Pages.Login
         public LoginPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
+           
             BindingContext = new LoginPageViewModel();
 
-            LabelAppInfo.Text = $"{AppInfo.Name}";
+            var statusbar = DependencyService.Get<IStatusBarPlatformSpecific>();
+            statusbar.SetStatusBarColor(Color.FromHex("5514B4"));
+
+            LabelAppInfo.Text =  String.IsNullOrEmpty(AppInfo.Name) ? "Löva" : $"{AppInfo.Name}";
             LabelVersionInfo.Text = $"{AppInfo.VersionString} {AppInfo.BuildString}";
 
         }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,18 +11,33 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\icomoon.ttf" />
+    <None Remove="Resources\topshape.svg" />
+    <None Remove="Resources\Volkhov-Bold.ttf" />
+    <None Remove="Resources\Volkhov-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\icomoon.ttf" />
+    <EmbeddedResource Include="Resources\topshape.svg" />
+    <EmbeddedResource Include="Resources\Volkhov-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Volkhov-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Telerik.UI.for.Xamarin" Version="2020.1.318.1" />
-    <PackageReference Include="Xam.Plugin.Media" Version="5.0.0-beta" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
-    <PackageReference Include="ZXing.Net.Mobile" Version="3.0.0-beta5" />
-    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="3.0.0-beta5" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="Pages\Alarm\MainAlarmPage.xaml.cs">
       <DependentUpon>MainAlarmPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Alarm\ReportIssueDetail.xaml.cs">
+      <DependentUpon>ReportIssueDetail.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\Errors\MainErrorPage.xaml.cs">
       <DependentUpon>MainErrorPage.xaml</DependentUpon>
@@ -42,6 +57,9 @@
     <EmbeddedResource Update="Pages\Alarm\MainAlarmPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Alarm\ReportIssueDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\Alarm\ReportIssuesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -55,6 +73,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Styles\GeneralDeviceStyle.xaml">

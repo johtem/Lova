@@ -15,7 +15,7 @@ namespace LOVA
         {
             InitializeComponent();
 
-            LoadStyles();
+            // LoadStyles();
 
             // MainPage = new NavigationPage(new MainPage());
             MainPage = new NavigationPage(new LoginPage());

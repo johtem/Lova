@@ -14,18 +14,34 @@ namespace LOVA.Pages.Alarm
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReportIssuesPage : ContentPage
     {
+        ReportIssuesViewModel viewModel;
+
         public ReportIssuesPage()
         {
             InitializeComponent();
-            BindingContext = new ReportIssuesViewModel();
+            viewModel = new ReportIssuesViewModel();
+            BindingContext = viewModel;
         }
 
-        private void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        protected override async void OnAppearing()
         {
-            IssueReport selectedItem = e.SelectedItem as IssueReport;
+            base.OnAppearing();
+            await viewModel.LoadDataAsync();
+        }
 
-            DisplayAlert("Selected", selectedItem.ProblemDescription, "OK");
+        private async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            IssueReport detail = e.SelectedItem as IssueReport;
 
+            // DisplayAlert("Selected", detail.ProblemDescription, "OK");
+
+            await Navigation.PushAsync(new ReportIssueDetailPage(detail));
+
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
     }
 }

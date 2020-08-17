@@ -7,13 +7,14 @@ using Xamarin.Forms;
 
 namespace LOVA.ViewModels
 {
-    public class LoginPageViewModel : INotifyPropertyChanged
+    public class LoginPageViewModel : BaseViewModel
     {
         public LoginPageViewModel()
         {
             LoginButton = new Command(LoginCheck);
         }
 
+        public Action DisplayInvalidLoginPrompt;
 
         public string LoginName { get; set; }
         public string Password { get; set; }
@@ -21,7 +22,7 @@ namespace LOVA.ViewModels
         
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        // public event PropertyChangedEventHandler PropertyChanged;
 
         public Command LoginButton { get; }
 
@@ -32,7 +33,7 @@ namespace LOVA.ViewModels
                 await App.Current.MainPage.DisplayAlert("Incorrect", "Lösenordet är fel ", "OK");
             }
             
-            await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new Pages.MainPage());
         }
     }
 }

@@ -2,52 +2,100 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"             
              mc:Ignorable="d"
              x:Class="LOVA.Pages.Login.LoginPage"
+             NavigationPage.HasNavigationBar="False"
              Title="Login">
 
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            
-        </ResourceDictionary>
-    </ContentPage.Resources>
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Spacing="10">
-                <Label HeightRequest="130"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="80" />
+
+        </Grid.RowDefinitions>
+
+        <ff:SvgCachedImage Grid.RowSpan="4"
+                           Source="resource://LOVA.Resources.topshape.svg" 
+                           HeightRequest="400" 
+                           VerticalOptions="Start"
+                           Aspect="AspectFill"
+                           Margin="0, -160, 0, 0"/>
+
+
+        <Label Grid.Row="0"
+                       HeightRequest="120"                      
                        HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Center"
                        Text="Löttingelund VA"
-                       BackgroundColor="{StaticResource primaryBackgroundColor}"
-                       TextColor="White"
-                       FontSize="40"
-                       HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center" />
-                <Entry Margin="20,0,20,0"
-                       HeightRequest="50"
-                       Placeholder="Email"
+               Style="{StaticResource PageHeaderLabelStyle}"
+                     />
+
+        <Entry Grid.Row="2"  
+                       Margin="20,0,20,0"
+                       HeightRequest="40"
+                       Placeholder="Login"
                        Text="{Binding LoginName}"
                        Keyboard="Email"
                        />
-                <Entry Margin="20,0,20,0"
-                       HeightRequest="50"
+        <Entry Grid.Row="3" 
+               Margin="20,8,20,0"
+                       HeightRequest="40"
                        IsPassword="True"
                        Placeholder="Password"
                        Text="{Binding Password}"
                        />
 
-                <Button                     
-                        Text="Login"    
-                        WidthRequest="200"                      
+
+ 
+
+
+        <Button         Grid.Row="4"             
+                        Text="Login" 
+                        Margin="0,32,0,0"
+                        WidthRequest="100"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"  
                         Command="{Binding LoginButton}"
                         Style="{StaticResource MainButtonStyle}"/>
 
-                <Label x:Name="LabelAppInfo" HorizontalOptions="Center" Style="{StaticResource MainTitleStyle}"/>
-                <Label x:Name="LabelVersionInfo" HorizontalOptions="Center" />
+        <Grid Grid.Row="5">
+            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0, 0, 0, 40" />
+                    <On Platform="Android, Windows" Value="0, 0, 0, 0" />
+                </OnPlatform>
+            </Grid.Margin>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" 
+                   x:Name="LabelAppInfo" 
+                   FontSize="8"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+            <Label Grid.Row="1" 
+                   x:Name="LabelVersionInfo" 
+                   FontSize="8"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+            <Label Grid.Row="2"
+                   Text="{Binding TodaysDate, Mode=OneWay, StringFormat='{0:yyyy-MM-dd}'}" 
+                   FontSize="8"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center" />
+                   
+        </Grid>
 
-                
-            </StackLayout>
-            
-        </ScrollView>
-    </ContentPage.Content>
+
+
+
+    </Grid>
 </ContentPage>

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              mc:Ignorable="d"
              x:Class="LOVA.App">
     <Application.Resources>
@@ -10,7 +11,7 @@
             <Color x:Key="Primary">#5514B4</Color>
             <Color x:Key="Secondary">#3700B3</Color>
             <Color x:Key="Accent">#03DAC6</Color>
-            <Color x:Key="Light">White</Color>
+            <Color x:Key="white">White</Color>
         </ResourceDictionary>
         
         <ResourceDictionary>
@@ -18,17 +19,55 @@
             
             <Color x:Key="primaryBackgroundColor">#5514B4</Color>
             <Color x:Key="primaryTextColor">#FFFAFA</Color>
-            
             <Color x:Key="BackgroundColorErrorDescription">#FFF4EE</Color>
             <Color x:Key="BackgroundColorErrorSolution">#F0FFF0</Color>
+            <Color x:Key="PageBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="DarkTextColor">#00133D</Color>
+            <Color x:Key="MediumTextColor">#999999</Color>
+            <Color x:Key="LightTextColor">#EEEEEE</Color>
+            
+            <!-- ContentPage style-->
+            <Style TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+                <Setter Property="ios:Page.UseSafeArea" Value="True" />
+            </Style>
+            
+            <!-- Base Label Style -->
+            
+            <!-- Label Styles -->
+            <Style x:Key="PageHeaderLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="42" />
+                <Setter Property="FontFamily" Value="Header" />
+                <Setter Property="TextColor"  Value="White" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
 
-            >
+            <Style TargetType="Label" x:Key="RegularTextStyle">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{StaticResource DarkTextColor}" />
+                <Setter Property="FontFamily" Value="Regular" />
+            </Style>
 
 
+            <!-- Grid Styles -->
+            <Style TargetType="Grid">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="RowSpacing" Value="0" />
+                <Setter Property="ColumnSpacing" Value="0" />
+            </Style> 
+
+     
 
             <!-- Generic styles -->
 
-            <Style TargetType="Button">
+
+            <Style x:Key="MainTitleStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
+            </Style>
+
+            <Style x:Key="MainButtonStyle"  TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource primaryBackgroundColor}" />
                 <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
                 <Setter Property="CornerRadius" Value="8" />

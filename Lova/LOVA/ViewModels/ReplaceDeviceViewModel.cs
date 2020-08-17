@@ -1,5 +1,6 @@
 ﻿using LOVA.Models;
 using LOVA.Pages.Errors;
+using LOVA.Services;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using System;
@@ -9,8 +10,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using ZXing.Mobile;
-using ZXing.Net.Mobile.Forms;
 
 namespace LOVA.ViewModels
 {
@@ -19,10 +18,9 @@ namespace LOVA.ViewModels
 
         public ReplaceDeviceViewModel()
         {
-            
-
-            OnScanNewButtonClicked = new Command(ScanNewAktivator, () => !IsBusy);
-            OnScanNewVentilButtonClicked = new Command(ScanNewVentil, () => !IsBusy);
+            DataLoaded = true;
+            IsBusy = false;
+           
             SaveError = new Command(Save, () => !IsBusy);
             OnTakePictureButtonClicked = new Command(TakePhotoMediaPlugin, () => !IsBusy);
         }
@@ -147,85 +145,10 @@ namespace LOVA.ViewModels
 
 
         public Command SaveError { get;  }
-        public Command OnScanNewButtonClicked { get;  }
-
-        public Command OnScanNewVentilButtonClicked { get; }
 
         public Command OnTakePictureButtonClicked { get; }
 
-        async void ScanNewAktivator()
-        {
-
-            // await Application.Current.MainPage.Navigation.PushAsync(new ScanNewAktivator(description));
-
-            var options = new MobileBarcodeScanningOptions
-            {
-                AutoRotate = true,
-                UseFrontCameraIfAvailable = false,               
-                TryHarder = true
-            };
-
-            var overlay = new ZXingDefaultOverlay
-            {
-                ShowFlashButton = false,
-                TopText = "Håll kameran över streckkoden",
-                BottomText = "Scanningen sker automatiskt",
-                AutomationId = "zxingDefaultOverlay"
-
-            };
-            
-            var scan = new ZXingScannerPage(options, customOverlay: overlay);
-            overlay.FlashCommand = new Command(() => scan.ToggleTorch());
-            scan.AutoFocus();
-            
-            scan.OnScanResult += (result) =>
-            {
-                scan.IsScanning = false;
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                    SerialNewAktivator = result.Text;
-                });
-            };
-            await Application.Current.MainPage.Navigation.PushAsync(scan);
-
-        }
-
-        async void ScanNewVentil()
-        {
-            var options = new MobileBarcodeScanningOptions
-            {
-                AutoRotate = true,
-                UseFrontCameraIfAvailable = false,
-                TryHarder = true
-            };
-
-            var overlay = new ZXingDefaultOverlay
-            {
-                ShowFlashButton = false,
-                TopText = "Håll kameran över streckkoden",
-                BottomText = "Scanningen sker automatiskt",
-                AutomationId = "zxingDefaultOverlay"
-
-            };
-
-            var scan = new ZXingScannerPage(options, customOverlay: overlay);
-            overlay.FlashCommand = new Command(() => scan.ToggleTorch());
-            scan.AutoFocus();
-
-            scan.OnScanResult += (result) =>
-            {
-                scan.IsScanning = false;
-
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                    SerialNewValve = result.Text;
-                });
-            };
-            await Application.Current.MainPage.Navigation.PushAsync(scan);
-        }
+        
 
         async void TakePhotoMediaPlugin()
         {
@@ -239,13 +162,12 @@ namespace LOVA.ViewModels
 
             var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
             {
-                Directory = "Test",
+                Directory = "Pictures",
+                //Name= "test.jpg",
                 SaveToAlbum = true,
                 CompressionQuality = 75,
                 CustomPhotoSize = 50,
-                PhotoSize = PhotoSize.MaxWidthHeight,
-                MaxWidthHeight = 2000,
-                DefaultCamera = CameraDevice.Front
+                PhotoSize = PhotoSize.Medium
             });
 
             if (file == null)
@@ -264,21 +186,37 @@ namespace LOVA.ViewModels
 
 
 
-          //  await Application.Current.MainPage.DisplayAlert("Bild", file.Path, "OK");
+          await Application.Current.MainPage.DisplayAlert("Bild", file.Path, "OK");
         }
  
 
         async void Save()
         {
-
+            DataLoaded = false;
+            IsBusy = true;
             var message = $@"Felbeskrivning: {ProblemDescription}
-Intagsenhet: {WellName}
-Åtgärd: {ProblemSolution}
-Ny Aktivator: {SerialNewAktivator}
-Ny Ventil: {SerialNewValve}";
+                            Intagsenhet: {WellName.ToUpper()}
+                            Åtgärd: {ProblemSolution}
+                            Ny Aktivator: {SerialNewAktivator}
+                            Ny Ventil: {SerialNewValve}";
+
+            IssueReport issueReport = new IssueReport
+            {
+                WellName = WellName.ToUpper(),
+                ProblemDescription = ProblemDescription,
+                SolutionDescription = ProblemSolution,
+                NewActivatorSerialNumber = SerialNewAktivator,
+                NewValveSerialNumber = SerialNewValve,
+                IsChargeable = IsChargeable,
+                CreatedAt = DateTime.Now
+            };
 
             try
             {
+                LovaRestService api = new LovaRestService();
+                 await api.SaveIssueReportAsync(issueReport, true);
+
+
 
                 var messageBody = new EmailMessage
                 {
@@ -290,6 +228,9 @@ Ny Ventil: {SerialNewValve}";
                 if (PhotoPath != null)
                 {
                     messageBody.Attachments.Add(new EmailAttachment(PhotoPath));
+
+
+
                 }
                 
 
@@ -302,9 +243,28 @@ Ny Ventil: {SerialNewValve}";
                     
                 await Application.Current.MainPage.DisplayAlert("Save", message, "OK");
             }
-            
-            
-          
+
+
+            await Application.Current.MainPage.Navigation.PopAsync();
+
         }
+
+
+        //Upload to blob function    
+        //private async void UploadImage(Stream stream)
+        //{
+        //    Busy();
+        //    var account = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=ahsanblobaccount;AccountKey=fOvpvzb8jFL0pNfDWvz9n76DzLWSlZu4aw6ZLXMbDId15YYfox15UoKvWMmTCJ6vcNoyk5w+A==;EndpointSuffix=core.windows.net");
+        //    var client = account.CreateCloudBlobClient();
+        //    var container = client.GetContainerReference("images");
+        //    await container.CreateIfNotExistsAsync();
+        //    var name = Guid.NewGuid().ToString();
+        //    var blockBlob = container.GetBlockBlobReference($"{name}.png");
+        //    await blockBlob.UploadFromStreamAsync(stream);
+        //    URL = blockBlob.Uri.OriginalString;
+        //    UploadedUrl.Text = URL;
+        //    NotBusy();
+        //    await DisplayAlert("Uploaded", "Image uploaded to Blob Storage Successfully!", "OK");
+        //}
     }
 }
