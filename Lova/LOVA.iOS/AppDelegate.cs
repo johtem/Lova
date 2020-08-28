@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FFImageLoading.Forms.Platform;
 using Foundation;
 using UIKit;
 
@@ -24,7 +23,7 @@ namespace LOVA.iOS
         {
             global::Xamarin.Forms.Forms.Init();
            
-            CachedImageRenderer.Init();
+            // CachedImageRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

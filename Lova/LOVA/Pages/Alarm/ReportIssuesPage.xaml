@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icons="clr-namespace:LOVA.Models"
              mc:Ignorable="d"
              x:Class="LOVA.Pages.Alarm.ReportIssuesPage"
              Title="Åtgärder"
@@ -36,10 +37,15 @@
                        VerticalOptions="Center"
                        Margin="0,0,32,0" />
                 <Button Grid.Column="2" 
-                        WidthRequest="70"
-                        HeightRequest="10"
-                        BorderColor="AliceBlue"
-                        Text="Tillbaka" 
+                        HeightRequest="64" 
+                        WidthRequest="64"
+                        CornerRadius="32"
+                        BackgroundColor="#FFFFFF"
+                        FontFamily="Icons"
+                        FontSize="28"
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        Text="{x:Static icons:IconFont.back}" 
+                        TextColor="{StaticResource Primary}"
                         Clicked="Button_Clicked" />
             </Grid>
 

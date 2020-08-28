@@ -49,7 +49,7 @@
             <Entry Grid.Column="1" 
                    Placeholder="Brunn/Intagsenhet" 
                    Text="{Binding WellName}"
-
+                   TextTransform="Uppercase"
                    HorizontalOptions="Center"/>
         </Grid>
         

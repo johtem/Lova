@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:ff="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"            
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              ios:Page.UseSafeArea="True"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
@@ -12,38 +12,72 @@
     <Grid RowSpacing="5">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="250" />
+            <RowDefinition>
+                <RowDefinition.Height>
+                    <OnPlatform x:TypeArguments="GridLength" iOS="250" Android="200" />
+                </RowDefinition.Height>
+            </RowDefinition>
+            <RowDefinition Height="10" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="*" />
             <RowDefinition Height="60" />
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
 
-        <ff:SvgCachedImage Grid.RowSpan="4"
-                           Source="resource://LOVA.Resources.topshape.svg" HeightRequest="400" VerticalOptions="Start"
-                           Aspect="AspectFill"
-                           Margin="0, -160, 0, 0"/>
+
+        <Path Fill="#5514B4" Stroke="#5514B4" Aspect="Fill" Data="m175.22195,95.51095l302,0l0,118.14048c-148,-75.74993 -151,45.01369 -302,19.43772l0,-137.5782z" >
+            <Path.Margin>
+                <OnPlatform x:TypeArguments="Thickness" iOS="0,-50,0,0" Android="0,0,0,0" />
+            </Path.Margin>
+
+        </Path>
+
+        <Label Grid.Row="0"
+                       HeightRequest="120"                      
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="Start"
+                       Text="Löttingelund VA"
+                       Padding="0,20,0,0"
+               Style="{StaticResource PageHeaderLabelStyle}"
+                     />
+
+
+        <Grid Grid.Row="2" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="180" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <pancake:PancakeView Grid.Column="1" 
+                             Padding="16"
+                             HorizontalOptions="Fill"
+                             VerticalOptions="Fill"
+                             BackgroundColor="White"
+                             HasShadow="True"
+                             
+                             CornerRadius="6"
+                             >
+                <pancake:PancakeView.Shadow>
+                    <pancake:DropShadow Color="#000000" Offset="10,10" />
+                </pancake:PancakeView.Shadow>
+
+
+                <Path HorizontalOptions="Center" VerticalOptions="Center" Fill="#5514B4" Stroke="#5514B4" Aspect="Uniform" Data="m58.235 14.355c-.193-.047-4.274-1-7.551.591-.8075419-2.2460979-2.2139322-4.2286-4.067-5.733-.3621025-.28352679-.8708975-.28352679-1.233 0-.179.14-4.384 3.479-4.384 7.787.0187141 1.1266214.2835672 2.2355228.776 3.249-2.1631063-.8278264-4.4598997-1.2511875-6.776-1.249h-10c-.5522847 0-1-.4477153-1-1v-10c1.1045695 0 2-.8954305 2-2v-4c0-1.1045695-.8954305-2-2-2h-22c-1.1045695 0-2 .8954305-2 2v4c0 1.1045695.8954305 2 2 2v14c.0115735 10.4886126 8.5113874 18.9884265 19 19l10.092.006c.5137776.047468.9070923.4780351.908.994v10c-1.1045695 0-2 .8954305-2 2v4c0 1.1045695.8954305 2 2 2h22c1.1045695 0 2-.8954305 2-2v-4c0-1.1045695-.8954305-2-2-2v-14c.005066-4.7002985-1.738702-9.2343805-4.892-12.72.238.012.484.021.744.021 2.0526959.081424 4.0743706-.5207171 5.748-1.712 3.376-2.667 3.4-8.038 3.4-8.266-.0018399-.4602703-.3176149-.8598393-.765-.968zm-12.235-3.019c1.4227176 1.2714549 2.4370328 2.9357668 2.915 4.783l.085-.019c-2.087 1.947-2.718 4.954-2.905 6.644-.142-.132-.3-.282-.475-.465l-.01-.01c-.977-1.002-2.61-3.027-2.61-5.269 0-2.466 1.968-4.675 3-5.664zm-10.611 9.678c3.0770983.0649012 6.0776476.9713604 8.676 2.621-9.56 2.53-12.743 11.494-13.683 15.365h-1.351c.286-11.128 5.169-16.783 6.358-17.986zm-1.613 19.863c-.2709661-.6695588-.7710535-1.2210372-1.411-1.556.948-3.8 4.167-12.475 13.838-14.083 2.3234351 2.0313201 4.0469639 4.659494 4.984 7.6-10.163-.565-15.129 4.343-17.411 8.039zm-31.776-38.877h22v4h-22zm2 20v-14h18v10c0 1.6568542 1.3431458 3 3 3h7.743c-2.093 2.65-5.483 8.419-5.712 18h-6.031c-9.3845001-.010471-16.98952899-7.6154999-17-17zm50 36h-22v-4h22zm-20-6v-6.876c.308-1.193 3.377-11.364 17.692-10.238.1978977 1.0263652.3009984 2.0687536.308 3.114v14zm20.363-29.981c-1.932 1.523-4.885 1.35-6.3 1.152.137-1.425.654-4.337 2.586-5.862s4.892-1.35 6.306-1.153c-.138 1.422-.649 4.329-2.592 5.863z" />
+
+            </pancake:PancakeView>
+        </Grid>
 
         
-        <Label Grid.Row="0"
-               Text="Löttingelund VA" 
-               FontSize="40"
-               HorizontalOptions="FillAndExpand"
-               HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               FontFamily="Header"
-               TextColor="{StaticResource white}"
-               HeightRequest="130"
-               />
 
 
-        <Button Grid.Row="2"
+        <Button Grid.Row="4"
                 Text="Rapportera åtgärd"
                 HeightRequest="80"
                 Clicked="OnNewErrorButtonClicked"             
                 />
 
 
-        <Button Grid.Row="3"
+        <Button Grid.Row="5"
                Text="Åtgärds rapport" 
                HeightRequest="80"
                Clicked="OnGetAlarmListButtonClicked"

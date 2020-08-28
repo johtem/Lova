@@ -1,4 +1,5 @@
-﻿using LOVA.Models;
+﻿using Azure.Storage.Blobs;
+using LOVA.Models;
 using LOVA.Pages.Errors;
 using LOVA.Services;
 using Plugin.Media;
@@ -6,8 +7,10 @@ using Plugin.Media.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -186,7 +189,7 @@ namespace LOVA.ViewModels
 
 
 
-          await Application.Current.MainPage.DisplayAlert("Bild", file.Path, "OK");
+            // await Application.Current.MainPage.DisplayAlert("Bild", file.Path, "OK");
         }
  
 
@@ -208,6 +211,7 @@ namespace LOVA.ViewModels
                 NewActivatorSerialNumber = SerialNewAktivator,
                 NewValveSerialNumber = SerialNewValve,
                 IsChargeable = IsChargeable,
+                ImageName = PhotoPath != null ? Path.GetFileName(PhotoPath) : "",
                 CreatedAt = DateTime.Now
             };
 
@@ -229,6 +233,40 @@ namespace LOVA.ViewModels
                 {
                     messageBody.Attachments.Add(new EmailAttachment(PhotoPath));
 
+                   // MediaFile file;
+
+                    string _storageConnection = "DefaultEndpointsProtocol=https;AccountName=lottingelundfiles;AccountKey=CT94V7yN4yaC5VS78hFvETzqrUfPpH6/U7FVSd8exMOCbopcR8MCd2OKePjHRgHsw8fT5jUaVXrCVh2BvXWsbA==;EndpointSuffix=core.windows.net";
+
+                    string containerName = "lovaphotos";
+                    string blobName = Path.GetFileName(PhotoPath);
+                    string filePath = PhotoPath;
+
+                    // Get a reference to a container named containerName and then create it
+                    BlobContainerClient container = new BlobContainerClient(_storageConnection, containerName);
+                    container.Create();
+
+                    // Get a reference to a blob named blobName in a container named "sample-container"
+                    BlobClient blob = container.GetBlobClient(blobName);
+
+                    // Upload local file
+                    blob.Upload(filePath);
+
+
+
+                    //CloudStorageAccount cloudStorageAccount = CloudStorageAccount.Parse(_storageConnection);
+                    //CloudBlobClient cloudBlobClient = cloudStorageAccount.CreateCloudBlobClient();
+                    //CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference("lovaphotos");
+
+                    //string filePath = PhotoPath;
+                    //string fileName = Path.GetFileName(filePath);
+                    //await cloudBlobContainer.CreateIfNotExistsAsync();
+
+                    //await cloudBlobContainer.SetPermissionsAsync(new BlobContainerPermissions
+                    //{
+                    //    PublicAccess = BlobContainerPublicAccessType.Blob
+                    //});
+                    //var blockBlob = cloudBlobContainer.GetBlockBlobReference(fileName);
+                    //await UploadImage(blockBlob, filePath);
 
 
                 }
@@ -249,6 +287,14 @@ namespace LOVA.ViewModels
 
         }
 
+        //Upload to blob function 
+        //private static async Task UploadImage(CloudBlockBlob blob, string filePath)
+        //{
+        //    using (var fileStream = File.OpenRead(filePath))
+        //    {
+        //        await blob.UploadFromStreamAsync(fileStream);
+        //    }
+        //}
 
         //Upload to blob function    
         //private async void UploadImage(Stream stream)

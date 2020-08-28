@@ -19,7 +19,7 @@ namespace LOVA.Pages.Login
         {
             InitializeComponent();
            
-            BindingContext = new LoginPageViewModel();
+            BindingContext = new LoginPageViewModel(Navigation);
 
             var statusbar = DependencyService.Get<IStatusBarPlatformSpecific>();
             statusbar.SetStatusBarColor(Color.FromHex("5514B4"));

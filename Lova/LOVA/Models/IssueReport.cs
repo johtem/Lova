@@ -16,6 +16,8 @@ namespace LOVA.Models
         public string OldValveSerialNumber { get; set; }
         public bool IsChargeable { get; set; }
 
+        public string ImageName { get; set; }
+
         public DateTime CreatedAt { get; set; }
     }
 }

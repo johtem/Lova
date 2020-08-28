@@ -1,6 +1,8 @@
-﻿using LOVA.Pages.Login;
+﻿using LOVA.Models;
+using LOVA.Pages.Login;
 using LOVA.Styles;
 using System;
+using System.Diagnostics;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +15,18 @@ namespace LOVA
         const int smallHeightResolution = 1280;
         public App()
         {
+
+            Device.SetFlags(new string[] { "Shapes_Experimental" });
+
             InitializeComponent();
+
+            if (AppSession.FirstRun)
+            {
+                // TODO
+                // Add here what should happens when FirstRun
+
+                AppSession.FirstRun = false;
+            }
 
             // LoadStyles();
 
@@ -48,14 +61,17 @@ namespace LOVA
 
         protected override void OnStart()
         {
+            Debug.WriteLine("OnStart");
         }
 
         protected override void OnSleep()
         {
+            Debug.WriteLine("OnSleep");
         }
 
         protected override void OnResume()
         {
+            Debug.WriteLine("OnResume");
         }
     }
 }

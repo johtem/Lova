@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icons="clr-namespace:LOVA.Models"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="LOVA.Pages.Alarm.ReportIssueDetailPage">
@@ -15,7 +16,8 @@
                 </OnPlatform>
             </Grid.Margin>
             <Grid.RowDefinitions>
-                <RowDefinition Height="100" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
@@ -23,7 +25,7 @@
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="25" />
+                <RowDefinition Height="70" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -51,7 +53,18 @@
             <Label Grid.Row="5" Grid.Column="1" x:Name="NewActivator" Style="{StaticResource RegularTextStyle}"/>
             <Label Grid.Row="6" Grid.Column="0" Text="Ny ventil" Style="{StaticResource RegularTextStyle}"/>
             <Label Grid.Row="6" Grid.Column="1" x:Name="NewValve" Style="{StaticResource RegularTextStyle}"/>
-            <Button Grid.Row="8" Grid.ColumnSpan="2"  Text="Tillbaka" Clicked="Button_Clicked" HorizontalOptions="Center" />
+            <Label Grid.Row="7" Grid.Column="0" Text="Foto" Style="{StaticResource RegularTextStyle}"/>
+            <Label Grid.Row="7" Grid.Column="1" x:Name="ImageName" Style="{StaticResource RegularTextStyle}"/>
+            <Image Grid.Row="8" Grid.ColumnSpan="2" x:Name="Image" Aspect="AspectFill" />
+            <Button Grid.Row="9" Grid.ColumnSpan="2"  HeightRequest="64" 
+                        WidthRequest="64"
+                        CornerRadius="32"
+                        BackgroundColor="#FFFFFF"
+                        FontFamily="Icons"
+                        FontSize="28"
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        Text="{x:Static icons:IconFont.back}" 
+                        TextColor="{StaticResource Primary}" Clicked="Button_Clicked" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
