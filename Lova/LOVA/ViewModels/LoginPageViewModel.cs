@@ -50,7 +50,7 @@ namespace LOVA.ViewModels
 
             try
             {
-
+                ErrorMessage = "Verifierar användare";
                 // Get data from API
                 // var ResultList = await RestHelper.GetAsync<List<IssueReport>>(AppSession.AllVACasesUrl);
 
@@ -100,7 +100,9 @@ namespace LOVA.ViewModels
             {
                 Device.BeginInvokeOnMainThread(() =>
                 {
-                    _navigation.PushAsync(new Pages.MainPage());
+                    //_navigation.PushAsync(new AppShell());
+                    
+                    Application.Current.MainPage = new AppShell();
                 });
                 
             }

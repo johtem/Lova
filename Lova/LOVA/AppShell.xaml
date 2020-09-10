@@ -1,7 +1,114 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:views="clr-namespace:LOVA.Pages.Errors"
+       xmlns:icons="clr-namespace:LOVA.Models"
        x:Class="LOVA.AppShell"
-       NavigationPage.HasBackButton="False">
+       NavigationPage.HasNavigationBar="False"
+       BackgroundColor="#5514B4"
+       ForegroundColor="#FFFFFF"
+       TitleColor="#FFFFFF"
+       DisabledColor="#B4FFFFFF"
+       UnselectedColor="#95FFFFFF"
+       >
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid BackgroundColor="{StaticResource primaryBackgroundColor}"  HeightRequest="80">
+                <Label Text="LöVA meny" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#FFFFFF"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    
+
+    <FlyoutItem Title="Åtgärder"
+                Shell.TabBarIsVisible="True"
+                FlyoutDisplayOptions="AsSingleItem"
+                >
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="MaterialFont"
+                                 
+                                 Glyph="{x:Static icons:Icons.BugOutline}"
+                                 Color="{StaticResource primaryBackgroundColor}"
+                                 Size="24" />
+        </FlyoutItem.Icon>
+
+        <Tab Title="Dashboard">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="{x:Static icons:Icons.Gauge}"
+                                 Size="24" />
+            </Tab.Icon>
+            <views:DashBoard />
+        </Tab>
+        <Tab Title="Visa åtgärder">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="{x:Static icons:Icons.EyeOutline}"
+                                 
+                                 Size="24" />
+            </Tab.Icon>
+            <views:ReportIssuesPage />
+        </Tab>
+
+        <Tab Title="Ny åtgärd">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="{x:Static icons:Icons.Plus}"
+                                 Size="24" />
+            </Tab.Icon>
+            <views:ReplaceDevicePage />
+        </Tab>
+    </FlyoutItem>
+    
+    <FlyoutItem Title="Larm">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="&#xf009c;"
+                             Color="{StaticResource primaryBackgroundColor}"
+                                 Size="24" />
+        </FlyoutItem.Icon>
+        <Tab Title="Dashboard">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="&#xf009c;"
+                                 Size="24" />
+            </Tab.Icon>
+            <views:Autocomplete />
+        </Tab>
+        <Tab Title="Visa larm">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="&#xf009c;"
+                                 Size="24" />
+            </Tab.Icon>
+            <views:DashBoard />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Dokument">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="MaterialFont"
+                             Glyph="{x:Static icons:Icons.FilePdfOutline}"
+                             Color="{StaticResource primaryBackgroundColor}"
+                             Size="24" />
+        </FlyoutItem.Icon>
+        <Tab Title="Områdeskarta">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="{x:Static icons:Icons.MapLegend}"
+                                 Size="24" />
+            </Tab.Icon>
+            <views:AreaPage />
+        </Tab>
+        <Tab Title="Felsökningstips">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="{x:Static icons:Icons.HelpRhombusOutline}"
+                                 Size="24" />
+            </Tab.Icon>
+            <views:DashBoard />
+        </Tab>
+    </FlyoutItem>
 
 </Shell>

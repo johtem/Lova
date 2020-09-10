@@ -26,20 +26,15 @@ namespace LOVA.Pages.Errors
 
             BindingContext = _viewModel;
 
-
+           
         }
 
-        //public ReplaceDevicePage(ReplaceDeviceViewModel errorVM)
-        //{
-        //    InitializeComponent();
-        //    BindingContext = errorVM;
-        //}
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            _viewModel.IsChargeable = false;
+            _viewModel.IsChargeable = true;
 
         }
 

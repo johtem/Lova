@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LOVA.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,9 @@ namespace LOVA
         public AppShell()
         {
             InitializeComponent();
+
+            var statusbar = DependencyService.Get<IStatusBarPlatformSpecific>();
+            statusbar.SetStatusBarColor(Color.FromHex("5514B4"));
         }
     }
 }

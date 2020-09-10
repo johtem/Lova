@@ -6,3 +6,4 @@ using Xamarin.Forms.Xaml;
 [assembly: ExportFont("Volkhov-Bold.ttf", Alias = "Header")]
 [assembly: ExportFont("Volkhov-Regular.ttf", Alias = "Regular")]
 [assembly: ExportFont("icomoon.ttf", Alias = "Icons")]
+[assembly: ExportFont("materialdesignicons-webfont.ttf", Alias = "MaterialFont")]

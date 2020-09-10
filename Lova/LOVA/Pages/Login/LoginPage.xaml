@@ -79,7 +79,7 @@
                 <Label Grid.Row="1"
                        Margin="40,0,40,0"
                        HeightRequest="40"
-                       FontSize="Large"
+                       FontSize="22"
                        TextColor="Red"
                        HorizontalOptions="Center"
                        VerticalOptions="End"

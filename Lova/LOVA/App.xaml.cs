@@ -31,7 +31,10 @@ namespace LOVA
             // LoadStyles();
 
             // MainPage = new NavigationPage(new MainPage());
-            MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new NavigationPage(new AppShell());
+            MainPage = new AppShell();
+            //MainPage = new LoginPage();
         }
 
         void LoadStyles()

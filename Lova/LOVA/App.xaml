@@ -7,6 +7,10 @@
              mc:Ignorable="d"
              x:Class="LOVA.App">
     <Application.Resources>
+        
+        
+        
+        
         <ResourceDictionary x:Name="dictionary" >
             <Color x:Key="Primary">#5514B4</Color>
             <Color x:Key="Secondary">#3700B3</Color>
@@ -15,6 +19,8 @@
         </ResourceDictionary>
         
         <ResourceDictionary>
+
+            
             <!-- colors -->
             
             <Color x:Key="primaryBackgroundColor">#5514B4</Color>

@@ -11,14 +11,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Errors\areamap.pdf" />
     <None Remove="Resources\icomoon.ttf" />
+    <None Remove="Resources\materialdesignicons-webfont.ttf" />
     <None Remove="Resources\topshape.svg" />
     <None Remove="Resources\Volkhov-Bold.ttf" />
     <None Remove="Resources\Volkhov-Regular.ttf" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Pages\Errors\areamap.pdf" />
     <EmbeddedResource Include="Resources\icomoon.ttf" />
+    <EmbeddedResource Include="Resources\materialdesignicons-webfont.ttf" />
     <EmbeddedResource Include="Resources\topshape.svg" />
     <EmbeddedResource Include="Resources\Volkhov-Bold.ttf" />
     <EmbeddedResource Include="Resources\Volkhov-Regular.ttf" />
@@ -27,6 +31,8 @@
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.5.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.1" />
+    <PackageReference Include="Telerik.UI.for.Xamarin" Version="2020.2.624.1" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
@@ -34,10 +40,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Pages\Alarm\MainAlarmPage.xaml.cs">
-      <DependentUpon>MainAlarmPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\Alarm\ReportIssueDetail.xaml.cs">
+    <Compile Update="Pages\Errors\ReportIssueDetail.xaml.cs">
       <DependentUpon>ReportIssueDetail.xaml</DependentUpon>
     </Compile>
     <Compile Update="Pages\Errors\MainErrorPage.xaml.cs">
@@ -52,16 +55,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Pages\Alarm\HttpTestPage.xaml">
+    <EmbeddedResource Update="Pages\Errors\AreaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Alarm\MainAlarmPage.xaml">
+    <EmbeddedResource Update="Pages\Errors\Autocomplete.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Alarm\ReportIssueDetail.xaml">
+    <EmbeddedResource Update="Pages\Errors\DashBoard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Alarm\ReportIssuesPage.xaml">
+    <EmbeddedResource Update="Pages\Errors\ReportIssueDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Errors\ReportIssuesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Errors\MainErrorPage.xaml">

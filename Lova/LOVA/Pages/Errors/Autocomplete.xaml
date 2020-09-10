@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             x:Class="LOVA.Pages.Errors.Autocomplete">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <telerikInput:RadAutoCompleteView x:Name="autoCompleteView" 
+                                              Watermark="Search here..."
+                                              CompletionMode="Contains"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icons="clr-namespace:LOVA.Models"
+             mc:Ignorable="d"
+             x:Class="LOVA.Pages.Errors.ReportIssuesPage"
+             Title="Åtgärder"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="{OnPlatform iOS=100, Android=84}" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Page Header-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0"
+                       Text="VA Åtgärder"   
+                       FontSize="15"
+                       TextColor="{StaticResource DarkTextColor}"
+                       HorizontalOptions="Start"
+                       VerticalOptions="Center"
+                       Margin="32,0,0,0" />
+                <Label Grid.Column="2"
+                       FontSize="12"
+                       Text="{Binding TodaysDate, Mode=OneWay, StringFormat='{0:yyyy-MM-dd}'}"  
+                       TextColor="{StaticResource MediumTextColor}"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"
+                       Margin="0,0,32,0" />
+                <!--<Button Grid.Column="2" 
+                        HeightRequest="64" 
+                        WidthRequest="64"
+                        CornerRadius="32"
+                        BackgroundColor="#FFFFFF"
+                        FontFamily="Icons"
+                        FontSize="28"
+                        HorizontalOptions="Center" VerticalOptions="Center"
+                        Text="{x:Static icons:IconFont.back}" 
+                        TextColor="{StaticResource Primary}"
+                        Clicked="Button_Clicked" />-->
+            </Grid>
+
+            <!-- Busy Indicator -->
+            <StackLayout
+            IsVisible="{Binding IsBusy, Mode=OneWay}"
+            Grid.Row="1"
+            Spacing="12"
+            BackgroundColor="Transparent"
+            Padding="8,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+                <ActivityIndicator 
+                               IsRunning="{Binding IsBusy, Mode=OneWay}"
+                               Color="{StaticResource primaryBackgroundColor}"
+                               HeightRequest="48"
+                               WidthRequest="48"/>
+
+                <Label Text="{Binding LoadingText, Mode=OneWay}"
+                       HorizontalOptions="Center"
+                       Margin="0, 10,0,0"
+                       Style="{StaticResource RegularTextStyle}"
+                       HorizontalTextAlignment="Center" />
+
+            </StackLayout>
+
+
+            <!-- Main Page -->
+            <StackLayout Grid.Row="1" 
+                     VerticalOptions="FillAndExpand" 
+                     Padding="5" 
+                     Margin="5,5,5,5"
+                     IsVisible="{Binding DataLoaded, Mode=OneWay}"    >
+
+
+                <ListView 
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding ResultList}"
+                      Margin="0,5,0,5"
+                      SeparatorVisibility="Default"
+                      ItemSelected="OnListViewItemSelected"
+                      >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                        <RowDefinition Height="20" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Text="{Binding CreatedAt, StringFormat='{0:yyyy-MM-dd}'}"
+                                           HeightRequest="30"
+                                           FontSize="Medium"
+                                           HorizontalOptions="Start"
+                                           Grid.Row="0"
+                                           Grid.Column="0"/>
+
+                                    <Label Grid.Row="0"
+                                           Grid.Column="1"
+                                           Text="{Binding WellName}"
+                                           HorizontalOptions="End"
+                                           FontSize="Medium" />
+                                    <Label Grid.Row="1"
+                                           Grid.Column="0" 
+                                           Grid.ColumnSpan="2"
+                                           HorizontalOptions="Start"
+                                           Text="{Binding ProblemDescription}"
+                                           FontSize="Small" />
+                                </Grid>
+
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

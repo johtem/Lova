@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:local="clr-namespace:LOVA.ViewModels"
+             xmlns:local="clr-namespace:LOVA.ViewModels" 
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="LOVA.Pages.Errors.ReplaceDevicePage">
@@ -12,23 +13,22 @@
     <!--<StackLayout IsVisible="{Binding IsBusy}">
         <Label Text="Sparar data" />
     </StackLayout>-->
-    
-    <Grid IsVisible="{Binding DataLoaded}">
+
+    <Grid IsVisible="{Binding DataLoaded}" >
         <Grid.Margin>
             <OnPlatform x:TypeArguments="Thickness">
-                <On Platform="iOS" Value="10,25,10,10" />
+                <On Platform="iOS" Value="10,20,10,10" />
                 <On Platform="Android, WinPhone, Windows" Value="10,10,10,10" />
             </OnPlatform>
         </Grid.Margin>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="90" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
+            <RowDefinition Height="80" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
 
@@ -39,66 +39,125 @@
                     Text="{Binding ProblemDescription}"
                     />
 
-        <Grid Grid.Row="2" Margin="0,5,0,5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" RowDefinitions="20,40,*,*" Margin="0,5,0,0">
+            <Label Grid.Column="0" Text="Intagsenhet:"  HorizontalOptions="Start" FontSize="15"/>
+  
+            <telerikInput:RadAutoCompleteView Grid.Row="1" Grid.Column="0" 
+                                              x:Name="autoCompleteView" 
+                                              Watermark="Ex: 2B3"
+                                              CompletionMode="StartsWith"
+                                              ItemsSource="{Binding Source}"
+                                              FontSize="15"
+                                              Text="{Binding WellName, Mode=TwoWay}"
+                                              SuggestionViewHeight="250"
+                                              SuggestionViewBackgroundColor="#DBDBDB" 
+                                              BorderColor="{StaticResource Primary}"                                  
+                                              BorderThickness="1"
+                                              MinimumHeightRequest="30"
+                                              CornerRadius="0"
+                                              DisplayMode="Plain"
+                                              
+                                              />
 
-            <Label Grid.Column="0" Text="Brunn/Intagsenhet:" HorizontalOptions="Start" FontSize="15"/>
-            <Entry Grid.Column="1" 
-                   Placeholder="Brunn/Intagsenhet" 
-                   Text="{Binding WellName}"
-                   TextTransform="Uppercase"
-                   HorizontalOptions="Center"/>
+            <Label Grid.Row="0" Grid.Column="1" Text="Aktivator:" FontSize="15" Margin="5,0,5,0" />
+            <telerikInput:RadEntry Grid.Row="1" Grid.Column="1" 
+                                   x:Name="entry" WatermarkText="Serienr" 
+                                   Text="{Binding SerialNewAktivator}"
+                                   BackgroundColor="White"
+                                   TextColor="#26A6D1"
+                                   Margin="5,0,5,0">
+                
+                <telerikInput:RadEntry.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS" Value="30"/>
+                        <On Platform="UWP" Value="-1"/>
+                    </OnPlatform>
+                </telerikInput:RadEntry.HeightRequest>
+
+                <telerikInput:RadEntry.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android, UWP" Value="10, 10, 0, 10" />
+                        <On Platform="iOS" Value="10, 10, 0, 20" />
+                    </OnPlatform>
+                </telerikInput:RadEntry.Padding>
+
+                <telerikInput:RadEntry.BorderStyle>
+                    <telerikInput:BorderStyle CornerRadius="0" BorderColor="{StaticResource Primary}" BorderThickness="1">
+                    </telerikInput:BorderStyle>
+                </telerikInput:RadEntry.BorderStyle>
+
+            </telerikInput:RadEntry>
+            <!--<Entry Grid.Row="1" Grid.Column="1" Placeholder="Serienr" Text="{Binding SerialNewAktivator}" />-->
+            <Label Grid.Row="0" Grid.Column="2" Text="Ventil:" FontSize="15" Margin="5,0,5,0" />
+            <!--<Entry Grid.Row="1" Grid.Column="2" Placeholder="Serienr" Text="{Binding SerialNewValve}" />-->
+
+            <telerikInput:RadEntry Grid.Row="1" Grid.Column="2" 
+                                   x:Name="entryVentil" WatermarkText="Serienr" 
+                                   Text="{Binding SerialNewValve}"
+                                   BackgroundColor="White"
+                                   TextColor="#26A6D1"
+                                   Margin="5,0,5,0">
+
+                <telerikInput:RadEntry.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS" Value="30"/>
+                        <On Platform="UWP" Value="-1"/>
+                    </OnPlatform>
+                </telerikInput:RadEntry.HeightRequest>
+
+                <telerikInput:RadEntry.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android, UWP" Value="10, 10, 0, 10" />
+                        <On Platform="iOS" Value="10, 10, 0, 20" />
+                    </OnPlatform>
+                </telerikInput:RadEntry.Padding>
+
+                <telerikInput:RadEntry.BorderStyle>
+                    <telerikInput:BorderStyle CornerRadius="0" BorderColor="{StaticResource Primary}" BorderThickness="1">
+                    </telerikInput:BorderStyle>
+                </telerikInput:RadEntry.BorderStyle>
+
+            </telerikInput:RadEntry>
+
+
         </Grid>
+
         
 
-        
-        <Grid Grid.Row="3" RowSpacing="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Text="Aktivator" FontSize="15" />
-            <Entry Grid.Row="0" Grid.Column="1" Placeholder="Serienr ny aktivator" Text="{Binding SerialNewAktivator}" />
-            <Label Grid.Row="1" Grid.Column="0" Text="Ventil" FontSize="15" />
-            <Entry Grid.Row="1" Grid.Column="1" Placeholder="Serienr ny ventil" Text="{Binding SerialNewValve}" />
-        </Grid>
-
-        <Label Grid.Row="4" Text="Åtgärd:" FontSize="15" />
-        <Editor Grid.Row="5" Placeholder="Åtgärd"
+        <Label Grid.Row="3" Text="Åtgärd:" FontSize="15" />
+        <Editor Grid.Row="4" Placeholder="Åtgärd"
                     HeightRequest="100"
                     BackgroundColor="{StaticResource BackgroundColorErrorSolution}"
                     Text="{Binding ProblemSolution}"/>
-        <Grid Grid.Row="6" Margin="-10,0,-10,0">
+        
+        <Grid Grid.Row="5" Margin="5 , 0, 5, 0" RowDefinitions="*,*">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
                 <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="100" />
             </Grid.ColumnDefinitions>
             
-            <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center" Text="Fakturerbart" FontSize="15"/>
+            <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Text="Fakturerbart" FontSize="15"/>
             <Switch Grid.Column="1"
+                    
                     VerticalOptions="Center" 
                     IsToggled="{Binding IsSwitchToggled}" 
                     OnColor="{StaticResource primaryBackgroundColor}"
                     />
-            <Image Grid.Column="2"  x:Name="image" Source="{Binding PhotoPath}" IsVisible="{Binding IsChargeable}"/>
-            <Button Grid.Column="3" VerticalOptions="CenterAndExpand" Text="Foto" IsEnabled="{Binding IsChargeable}" x:Name="takePhoto" Command="{Binding OnTakePictureButtonClicked}"/>
+            <Image Grid.Row="1"  Grid.Column="2" BackgroundColor="PapayaWhip" x:Name="image" Source="{Binding PhotoPath}" IsVisible="{Binding IsChargeable}" HeightRequest="75" WidthRequest="75"/>
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" WidthRequest="100" VerticalOptions="CenterAndExpand" Text="Välj bild" IsEnabled="{Binding IsChargeable}" x:Name="uploadPhoto" Command="{Binding OnUploadPictureButtonClicked}"/>
+            <Button Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" WidthRequest="100" VerticalOptions="CenterAndExpand" Text="Nytt foto" IsEnabled="{Binding IsChargeable}" x:Name="takePhoto" Command="{Binding OnTakePictureButtonClicked}"/>
+           
         </Grid>
-        <Grid Grid.Row="7">
+        
+        <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Text="Spara" Command="{Binding SaveError}" HorizontalOptions="Start"/>
-            <Button Grid.Column="1" Text="Tillbaka" Clicked="Button_Clicked" HorizontalOptions="End" />
+            <Button Grid.Column="1" Text="Spara" Command="{Binding SaveError}" HorizontalOptions="End" BackgroundColor="LightGreen"/>
+            <!--<Button Grid.Column="1" Text="Tillbaka" Clicked="Button_Clicked" HorizontalOptions="End" IsEnabled="False" />-->
         </Grid>
         
 
