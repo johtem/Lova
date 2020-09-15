@@ -5,16 +5,16 @@
        xmlns:icons="clr-namespace:LOVA.Models"
        x:Class="LOVA.AppShell"
        NavigationPage.HasNavigationBar="False"
-       BackgroundColor="#5514B4"
-       ForegroundColor="#FFFFFF"
-       TitleColor="#FFFFFF"
+       BackgroundColor="#6C23C2"
+       ForegroundColor="White"
+       TitleColor="White"
        DisabledColor="#B4FFFFFF"
        UnselectedColor="#95FFFFFF"
        >
 
     <Shell.FlyoutHeaderTemplate>
         <DataTemplate>
-            <Grid BackgroundColor="{StaticResource primaryBackgroundColor}"  HeightRequest="80">
+            <Grid BackgroundColor="{StaticResource PrimaryBackgroundColor}"  HeightRequest="80">
                 <Label Text="LöVA meny" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#FFFFFF"/>
             </Grid>
         </DataTemplate>
@@ -29,7 +29,7 @@
             <FontImageSource FontFamily="MaterialFont"
                                  
                                  Glyph="{x:Static icons:Icons.BugOutline}"
-                                 Color="{StaticResource primaryBackgroundColor}"
+                                 Color="{StaticResource PrimaryBackgroundColor}"
                                  Size="24" />
         </FlyoutItem.Icon>
 
@@ -65,7 +65,7 @@
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="MaterialFont"
                                  Glyph="&#xf009c;"
-                             Color="{StaticResource primaryBackgroundColor}"
+                             Color="{StaticResource PrimaryBackgroundColor}"
                                  Size="24" />
         </FlyoutItem.Icon>
         <Tab Title="Dashboard">
@@ -90,7 +90,7 @@
         <FlyoutItem.Icon>
             <FontImageSource FontFamily="MaterialFont"
                              Glyph="{x:Static icons:Icons.FilePdfOutline}"
-                             Color="{StaticResource primaryBackgroundColor}"
+                             Color="{StaticResource PrimaryBackgroundColor}"
                              Size="24" />
         </FlyoutItem.Icon>
         <Tab Title="Områdeskarta">

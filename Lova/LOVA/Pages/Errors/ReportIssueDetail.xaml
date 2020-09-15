@@ -40,7 +40,7 @@
                    HorizontalOptions="FillAndExpand"
                    HorizontalTextAlignment="Center"
                    VerticalTextAlignment="Center"
-                   BackgroundColor="{StaticResource primaryBackgroundColor}"
+                   BackgroundColor="{StaticResource PrimaryBackgroundColor}"
                    TextColor="White"/>
             <Label Grid.Row="1" Grid.Column="0" Text="Datum" Style="{StaticResource RegularTextStyle}"/>
             <Label Grid.Row="1" Grid.Column="1" x:Name="CreatedAt" HorizontalOptions="Start" Style="{StaticResource RegularTextStyle}" />

@@ -9,32 +9,28 @@
     <Application.Resources>
         
         
-        
-        
-        <ResourceDictionary x:Name="dictionary" >
-            <Color x:Key="Primary">#5514B4</Color>
-            <Color x:Key="Secondary">#3700B3</Color>
-            <Color x:Key="Accent">#03DAC6</Color>
-            <Color x:Key="white">White</Color>
-        </ResourceDictionary>
-        
         <ResourceDictionary>
 
             
             <!-- colors -->
+            <Color x:Key="PrimaryColor">#6C23C2</Color>
+            <Color x:Key="PrimaryDarkColor">#5311B3</Color>
+            <Color x:Key="AccentColor">#78C223</Color>
+            <Color x:Key="White">White</Color>
             
-            <Color x:Key="primaryBackgroundColor">#5514B4</Color>
-            <Color x:Key="primaryTextColor">#FFFAFA</Color>
+            <Color x:Key="PrimaryBackgroundColor">#6C23C2</Color>
+            <Color x:Key="PrimaryTextColor">#FFFAFA</Color>
             <Color x:Key="BackgroundColorErrorDescription">#FFF4EE</Color>
             <Color x:Key="BackgroundColorErrorSolution">#F0FFF0</Color>
-            <Color x:Key="PageBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="PrimaryForegroundColor">#FFFFFF</Color>
+            <Color x:Key="PrimaryTitleColor">#FFFFFF</Color>
             <Color x:Key="DarkTextColor">#00133D</Color>
             <Color x:Key="MediumTextColor">#999999</Color>
             <Color x:Key="LightTextColor">#EEEEEE</Color>
             
             <!-- ContentPage style-->
             <Style TargetType="ContentPage">
-                <Setter Property="BackgroundColor" Value="{StaticResource PageBackgroundColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource White}" />
                 <Setter Property="ios:Page.UseSafeArea" Value="True" />
             </Style>
             
@@ -62,23 +58,30 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
                 <Setter Property="RowSpacing" Value="0" />
                 <Setter Property="ColumnSpacing" Value="0" />
-            </Style> 
+            </Style>
 
-     
+
+
+
+
 
             <!-- Generic styles -->
 
 
             <Style x:Key="MainTitleStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
             </Style>
 
             <Style x:Key="MainButtonStyle"  TargetType="Button">
-                <Setter Property="BackgroundColor" Value="{StaticResource primaryBackgroundColor}" />
-                <Setter Property="TextColor" Value="{StaticResource primaryTextColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryBackgroundColor}" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}" />
                 <Setter Property="CornerRadius" Value="8" />
                 <Setter Property="HeightRequest" Value="52" />
             </Style>
+            
+            
+            
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

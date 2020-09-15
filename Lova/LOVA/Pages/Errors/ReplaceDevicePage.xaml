@@ -22,24 +22,41 @@
             </OnPlatform>
         </Grid.Margin>
         <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="150" />
             <RowDefinition Height="20" />
             <RowDefinition Height="80" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="80" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
 
-        <Label Text="Problembeskrivning:" FontSize="15"  />
-        <Editor Grid.Row="1"   Placeholder="Problembeskrivning" 
+        <Editor Grid.Row="0"   Placeholder="Problembeskrivning" 
                     HeightRequest="100"
                     BackgroundColor="{StaticResource BackgroundColorErrorDescription}"
                     Text="{Binding ProblemDescription}"
                     />
 
-        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" RowDefinitions="20,40,*,*" Margin="0,5,0,0">
+        <Grid Grid.Row="1" ColumnDefinitions="*, 2*" RowDefinitions="*, *" >
+            <Label Grid.Row="0" Grid.Column="0" Text="Tid larm:" FontSize="15" Margin="0,5,5,0" />
+            <telerikInput:RadDateTimePicker Grid.Row="0" Grid.Column="1"
+                                            x:Name="timeForAlarm"
+                                            Date="{Binding TimeForAlarm}" 
+                                            SpinnerFormat="yyyy-MM-dd HH:mm"
+                                            DefaultHighlightedDate="2020,9,11"
+                                            HeightRequest="20"/>
+            <Label Grid.Row="1" Grid.Column="0" Text="Ankomsttid:" FontSize="15" Margin="0,5,5,0" />
+            <telerikInput:RadDateTimePicker Grid.Row="1" Grid.Column="1"
+                                            x:Name="entryArrivalTime"
+                                            Date="{Binding ArrivalTime}" 
+                                            SpinnerFormat="yyyy-MM-dd HH:mm"
+                                            DefaultHighlightedDate="2020,9,11"
+                                            HeightRequest="20"/>
+                    
+        </Grid>
+
+        <Grid Grid.Row="2" ColumnDefinitions="*,*,*" RowDefinitions="20,40" Margin="0,8,0,8">
             <Label Grid.Column="0" Text="Intagsenhet:"  HorizontalOptions="Start" FontSize="15"/>
   
             <telerikInput:RadAutoCompleteView Grid.Row="1" Grid.Column="0" 
@@ -51,7 +68,7 @@
                                               Text="{Binding WellName, Mode=TwoWay}"
                                               SuggestionViewHeight="250"
                                               SuggestionViewBackgroundColor="#DBDBDB" 
-                                              BorderColor="{StaticResource Primary}"                                  
+                                              BorderColor="{StaticResource PrimaryColor}"                                  
                                               BorderThickness="1"
                                               MinimumHeightRequest="30"
                                               CornerRadius="0"
@@ -82,7 +99,7 @@
                 </telerikInput:RadEntry.Padding>
 
                 <telerikInput:RadEntry.BorderStyle>
-                    <telerikInput:BorderStyle CornerRadius="0" BorderColor="{StaticResource Primary}" BorderThickness="1">
+                    <telerikInput:BorderStyle CornerRadius="0" BorderColor="{StaticResource PrimaryColor}" BorderThickness="1">
                     </telerikInput:BorderStyle>
                 </telerikInput:RadEntry.BorderStyle>
 
@@ -113,7 +130,7 @@
                 </telerikInput:RadEntry.Padding>
 
                 <telerikInput:RadEntry.BorderStyle>
-                    <telerikInput:BorderStyle CornerRadius="0" BorderColor="{StaticResource Primary}" BorderThickness="1">
+                    <telerikInput:BorderStyle CornerRadius="0" BorderColor="{StaticResource PrimaryColor}" BorderThickness="1">
                     </telerikInput:BorderStyle>
                 </telerikInput:RadEntry.BorderStyle>
 
@@ -124,39 +141,64 @@
 
         
 
-        <Label Grid.Row="3" Text="Åtgärd:" FontSize="15" />
-        <Editor Grid.Row="4" Placeholder="Åtgärd"
-                    HeightRequest="100"
-                    BackgroundColor="{StaticResource BackgroundColorErrorSolution}"
-                    Text="{Binding ProblemSolution}"/>
+
         
-        <Grid Grid.Row="5" Margin="5 , 0, 5, 0" RowDefinitions="*,*">
+        <Grid Grid.Row="3" Margin="5, 5, 5, 0" RowDefinitions="40,*,*">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="50" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
             <Label Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Text="Fakturerbart" FontSize="15"/>
-            <Switch Grid.Column="1"
-                    
+            <Switch Grid.Column="0"
+                    HorizontalOptions="End"
                     VerticalOptions="Center" 
                     IsToggled="{Binding IsSwitchToggled}" 
-                    OnColor="{StaticResource primaryBackgroundColor}"
+                    OnColor="{StaticResource PrimaryBackgroundColor}"
                     />
-            <Image Grid.Row="1"  Grid.Column="2" BackgroundColor="PapayaWhip" x:Name="image" Source="{Binding PhotoPath}" IsVisible="{Binding IsChargeable}" HeightRequest="75" WidthRequest="75"/>
-            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" WidthRequest="100" VerticalOptions="CenterAndExpand" Text="Välj bild" IsEnabled="{Binding IsChargeable}" x:Name="uploadPhoto" Command="{Binding OnUploadPictureButtonClicked}"/>
-            <Button Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2" WidthRequest="100" VerticalOptions="CenterAndExpand" Text="Nytt foto" IsEnabled="{Binding IsChargeable}" x:Name="takePhoto" Command="{Binding OnTakePictureButtonClicked}"/>
+
+            <Label Grid.Row="0" Grid.Column="1" Text="Åtgärdstid:" FontSize="15"  VerticalOptions="Center" HorizontalOptions="End"/>
+            <telerikInput:RadEntry Grid.Row="0" Grid.Column="2" 
+                                   x:Name="entryTimeToRepair" WatermarkText="Åtgärdstid" 
+                                   Text="{Binding TimeToRepair}"
+                                   BackgroundColor="White"
+                                   TextColor="#26A6D1"
+                                   Margin=" 10,0,5,0">
+                <telerikInput:RadEntry.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android, iOS" Value="30"/>
+                        <On Platform="UWP" Value="-1"/>
+                    </OnPlatform>
+                </telerikInput:RadEntry.HeightRequest>
+
+
+
+                <telerikInput:RadEntry.BorderStyle>
+                    <telerikInput:BorderStyle CornerRadius="0" BorderColor="{StaticResource PrimaryColor}" BorderThickness="1">
+                    </telerikInput:BorderStyle>
+                </telerikInput:RadEntry.BorderStyle>
+            </telerikInput:RadEntry>
+
+
+            <Image Grid.Row="1"  Grid.Column="2" Grid.RowSpan="2"  BackgroundColor="PapayaWhip" x:Name="image" Source="{Binding PhotoPath}" IsVisible="{Binding IsChargeable}" HeightRequest="75" WidthRequest="75"  Margin="0,5,0,0"/>
+            <Button Grid.Row="1" Grid.Column="0"  WidthRequest="100" VerticalOptions="CenterAndExpand" Text="Välj bild" IsEnabled="{Binding IsChargeable}" x:Name="uploadPhoto" Command="{Binding OnUploadPictureButtonClicked}"/>
+            <Button Grid.Row="2" Grid.Column="0"  WidthRequest="100" VerticalOptions="CenterAndExpand" Text="Nytt foto" IsEnabled="{Binding IsChargeable}" x:Name="takePhoto" Command="{Binding OnTakePictureButtonClicked}"/>
            
         </Grid>
-        
+
+        <Label Grid.Row="4" Text="Åtgärd:" FontSize="15" />
+        <Editor Grid.Row="5" Placeholder="Åtgärd"
+                    HeightRequest="100"
+                    BackgroundColor="{StaticResource BackgroundColorErrorSolution}"
+                    Text="{Binding ProblemSolution}"/>
+
         <Grid Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="1" Text="Spara" Command="{Binding SaveError}" HorizontalOptions="End" BackgroundColor="LightGreen"/>
+            <Button Grid.Column="1" Text="Spara" Command="{Binding SaveError}" HorizontalOptions="End" BackgroundColor="LightGreen" HeightRequest="30" MinimumHeightRequest="30"/>
             <!--<Button Grid.Column="1" Text="Tillbaka" Clicked="Button_Clicked" HorizontalOptions="End" IsEnabled="False" />-->
         </Grid>
         

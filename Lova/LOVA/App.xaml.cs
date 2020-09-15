@@ -41,11 +41,11 @@ namespace LOVA
         {
             if (IsASmallDevice())
             {
-                dictionary.MergedDictionaries.Add(SmallDeviceStyle.SharedInstance);
+                //dictionary.MergedDictionaries.Add(SmallDeviceStyle.SharedInstance);
             }
             else
             {
-                dictionary.MergedDictionaries.Add(GeneralDeviceStyle.SharedInstance);
+                //dictionary.MergedDictionaries.Add(GeneralDeviceStyle.SharedInstance);
             }
         }
 

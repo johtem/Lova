@@ -61,7 +61,7 @@
 
                 <ActivityIndicator 
                                IsRunning="{Binding IsBusy, Mode=OneWay}"
-                               Color="{StaticResource primaryBackgroundColor}"
+                               Color="{StaticResource PrimaryBackgroundColor}"
                                HeightRequest="48"
                                WidthRequest="48"/>
 
