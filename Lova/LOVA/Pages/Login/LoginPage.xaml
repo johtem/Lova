@@ -83,7 +83,8 @@
                        TextColor="Red"
                        HorizontalOptions="Center"
                        VerticalOptions="End"
-                       Text="{Binding ErrorMessage}" />
+                       Text="{Binding ErrorMessage}"
+                       x:Name="networkstate" />
 
                 <Entry Grid.Row="2"  
                        Margin="40,0,40,0"

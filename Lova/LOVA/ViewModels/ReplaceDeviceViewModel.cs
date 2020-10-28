@@ -31,6 +31,10 @@ namespace LOVA.ViewModels
             OnTakePictureButtonClicked = new Command(TakePhotoMediaPlugin, () => !IsBusy);
             OnUploadPictureButtonClicked = new Command(uploadPhotoMediaPlugin, () => !IsBusy);
 
+            TimeForAlarm = DateTime.Now.AddHours(-1);
+            ArrivalTime = DateTime.Now;
+            TimeToRepair = 1;
+
             this.Source = new ObservableCollection<string>()
             {
                 "1A1", "1A2", "1A3", "1A4",

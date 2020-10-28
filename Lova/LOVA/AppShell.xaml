@@ -32,6 +32,15 @@
                                  Color="{StaticResource PrimaryBackgroundColor}"
                                  Size="24" />
         </FlyoutItem.Icon>
+        <Tab Title="Ny åtgärd">
+            <Tab.Icon>
+                <FontImageSource FontFamily="MaterialFont"
+                                 Glyph="{x:Static icons:Icons.Plus}"
+                                 Size="24" />
+            </Tab.Icon>
+            <views:ReplaceDevicePage />
+        </Tab>
+        
 
         <Tab Title="Dashboard">
             <Tab.Icon>
@@ -51,14 +60,7 @@
             <views:ReportIssuesPage />
         </Tab>
 
-        <Tab Title="Ny åtgärd">
-            <Tab.Icon>
-                <FontImageSource FontFamily="MaterialFont"
-                                 Glyph="{x:Static icons:Icons.Plus}"
-                                 Size="24" />
-            </Tab.Icon>
-            <views:ReplaceDevicePage />
-        </Tab>
+        
     </FlyoutItem>
     
     <FlyoutItem Title="Larm">
@@ -74,7 +76,7 @@
                                  Glyph="&#xf009c;"
                                  Size="24" />
             </Tab.Icon>
-            <views:Autocomplete />
+            <views:AlarmDashboard />
         </Tab>
         <Tab Title="Visa larm">
             <Tab.Icon>
@@ -110,5 +112,27 @@
             <views:DashBoard />
         </Tab>
     </FlyoutItem>
+    <ShellContent Route="location"  
+                  
+                  Title="Location"                  
+                  ContentTemplate="{DataTemplate views:Location}" >
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="MaterialFont"
+                             Glyph="{x:Static icons:Icons.CheckNetwork}"
+                             Color="{StaticResource PrimaryBackgroundColor}"
+                             Size="24" />
+        </ShellContent.Icon>
+    </ShellContent>
+    <ShellContent Route="about"  
+                  
+                  Title="About"                  
+                  ContentTemplate="{DataTemplate views:About}" >
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="MaterialFont"
+                             Glyph="{x:Static icons:Icons.ScatterPlot}"
+                             Color="{StaticResource PrimaryBackgroundColor}"
+                             Size="24" />
+        </ShellContent.Icon>
+    </ShellContent>
 
 </Shell>

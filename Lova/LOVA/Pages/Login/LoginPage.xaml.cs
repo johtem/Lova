@@ -27,6 +27,11 @@ namespace LOVA.Pages.Login
             LabelAppInfo.Text =  String.IsNullOrEmpty(AppInfo.Name) ? "Löva" : $"{AppInfo.Name}";
             LabelVersionInfo.Text = $"{AppInfo.VersionString} {AppInfo.BuildString}";
 
+            if (Connectivity.NetworkAccess == NetworkAccess.None)
+            {
+                networkstate.Text = "Anslut till Internet!";
+            }
+
         }
     }
 }

@@ -31,15 +31,18 @@
   <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.5.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.1" />
-    <PackageReference Include="Telerik.UI.for.Xamarin" Version="2020.2.624.1" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="Telerik.UI.for.Xamarin" Version="2020.3.1022.1" />
     <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre2" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.1.0.714" />
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Pages\Errors\AlarmDashboard.xaml.cs">
+      <DependentUpon>AlarmDashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Pages\Errors\ReportIssueDetail.xaml.cs">
       <DependentUpon>ReportIssueDetail.xaml</DependentUpon>
     </Compile>
@@ -55,13 +58,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Pages\Errors\About.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Pages\Errors\AreaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\Errors\Autocomplete.xaml">
+    <EmbeddedResource Update="Pages\Errors\AlarmDashboard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Errors\DashBoard.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Errors\Location.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Errors\ReportIssueDetail.xaml">
